@@ -33,6 +33,7 @@ We seek to provide a developer friendly codebase. For example, exploration of ne
       * Don't hand-write things twice, once for high performance readonly access and once for mutable access
       * Don't hand-write per-field parsing (struct.blah = read type of blah, etc)
          * It's OK to *occasionally* hand-write, particularly for some of the more obtuse parts, but it should be the exception not the rule 
+         * Try to continue the HarfBuzz and FontTools style of declaring the shape of things and letting automation take over wherever possible
       * Automated authoring, such as by macro or build time tooling is acceptable
    * Minimize unsafe code
    * Invest in testing
@@ -42,7 +43,7 @@ We seek to provide a developer friendly codebase. For example, exploration of ne
 We will _prefer_ to:
 
 * Make incremental progress, with each milestone being used in production, rather than spend years with parallel increasingly divergent implementations.
-* Test the Rust implementation against the non-Rust implementation
+* Test the Rust implementation against the non-Rust implementation for both correctness and performance
    * This has been very successful to enable replacement of Python subsetting with hb-subset
 * Fail-fast, if rebuilding in Rust is infeasible we would like to know ASAP
    * Given the results of projects like piet-gpu and swash we currently believe the effort very feasible
@@ -57,3 +58,4 @@ Current guess at first steps (very open to debate):
    * If Swash could shape using our shiny new toys that would be a very nice demonstration
 3. Build next-gen fontmake, converting parts to Rust and enabling parallelism
    * Guessing we would either do a good interchange format ([flatfont](https://github.com/googlefonts/flatfont)?) + ninja OR a Rust based executor using something like Rayon
+
