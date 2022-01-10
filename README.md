@@ -59,3 +59,7 @@ Current guess at first steps (very open to debate):
 3. Build next-gen fontmake, converting parts to Rust and enabling parallelism
    * Guessing we would either do a good interchange format ([flatfont](https://github.com/googlefonts/flatfont)?) + ninja OR a Rust based executor using something like Rayon
 
+## References
+
+* https://security.googleblog.com/2021/09/an-update-on-memory-safety-in-chrome.html offers commentary on the feasibility of having Rust-like safety in C++
+* https://pngquant.org/rust.html offers an interesting example of a Rust migration of a small library
