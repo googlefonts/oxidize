@@ -7,8 +7,10 @@ Wherein we contemplate moving shaping, rasterization, font compilation, and gene
 We currently rely C++ for anything high performance, e.g. shaping or subsetting, and Python for general purpose manipulation. The results are exactly what you'd expect:
 
 * Python code (fonttools, fontmake, nanoemoji, etc) have high development velocity, relatively fast developer rampup, and runtime safety, slow runtime
+   * It's SO slow that running it in production at scale causes us great pain. Queues back up, we burn memory and CPU, and it just doesn't fit our infra all that well.
 * C++ code (HarfBuzz) has fast runtime, very slow development velocity, very slow developer rampup, and any safety it might have is due to extensive fuzzing
    * It's entirely normal to make a seemingly safe change and then see a stream of fuzzer bugs
+   * Best thing ever in production, blindingly fast and low resource cost, fits infrastructure nicely. But scary due to lack of safety.
 
 Some logic ends up implemented in both languages. For example, when it became apparent the Python subsetter was too slow for both runtime serving and future projects like [progressive font enrichment](https://www.w3.org/TR/PFE-evaluation/) the [hb-subset](goo.gl/Qy3Eqc) project was born.
 
