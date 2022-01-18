@@ -21,11 +21,26 @@ Rust appears to offer us the ability to implement fast, safer code with developm
 ### Support both our primary usage patterns
 
 1. Performance-critical read-only users (shaping, rasterization)
+   * HarfBuzz and FreeType have *years* of performance optimizations. A replacement that is significantly slower will not land.
 1. Read/write use (compilers, utilities)
+   * Performance is less critical here. We don't want to be *slow*, but we don't need the level of performance obsession shaping needs either.
 
 For read-only users we may need to support readonly mmap access. Crates like zerocopy and the like suggest this is possible. Establishing a clean pattern here should be tackled early ([poc exploration](https://github.com/rsheeter/rust_read_font)).
 
-### Provide a safe, productive, codebase
+### Offer memory safety for text rendering 
+
+Chrome and Microsoft both observe that:
+
+1. 70% of high severity security bugs are memory safety issues ([Chrome](https://www.chromium.org/Home/chromium-security/memory-safety), [Microsoft](https://msrc-blog.microsoft.com/2019/07/18/we-need-a-safer-systems-programming-language/))
+1. Rust _may_ help
+   * If it can [play nice with C++](https://security.googleblog.com/2021/09/an-update-on-memory-safety-in-chrome.html)
+   * For Fonts we can, if necessary, limit ourselves to stable C ABI
+
+A safe text stack is desirable for Chrome, Android, and more. At time of writing we observe a semi-steady stream of fuzzer issues. It seems plausible a Rust rewrite can stop the bleeding. This is promising enough it's well worth giving it a try!
+
+HarfBuzz is the primary target. Some parts of FreeType used in Chrome and Android may also need to be replaced. If we do both the stream of fuzzer issues _should_ stop.
+
+### A productive codebase
 
 We seek to provide a developer friendly codebase. For example, exploration of new structs for something COLRv1 should be readily achievable by forking and hacking around. That means the code needs to be simpler than todays C++ and as close as possible to Python level development velocity. To achieve this we will seek to establish an efficient pattern to support our two primary usage patterns. This will require that we:
 
