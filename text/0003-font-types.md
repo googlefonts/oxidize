@@ -1,5 +1,6 @@
 - 2022-01-17
 - status: proposal
+- author: @cmyr
 - PR: https://github.com/googlefonts/oxidize/pull/3
 
 ## A foundation for building font tooling in Rust
@@ -22,8 +23,19 @@ This is intended to answer some of the questions outlined in this repository's
 README. In particular, we aim to determine whether the following goals are feasible:
 
 - using macros to describe the shape of tables
--copy generating both zero-allocation read-only table definitions as well as owned,
-  mutable definitions (for compilation)
+- the same codegen tools should produce types suitable for both zero-allocation,
+  read-only table definitions as well for creating and modifying new tables
+
+## additional goals
+
+- A simple, clean API for parsing: this should be as good as a hand-written API
+  such as in [pinot][].
+- A *reasonably* clean API for authoring: we don't expect this API to be used
+  directly very often; most of the time there will likely be a higher-level
+  compiler abstraction that will call into it. That said, it should be totally
+  expressive (complete control over things like formats for subtables that
+  support multiple formats) and should prioritize simplicity and efficiency over
+  ergonomics.
 - suitable for prototyping & extensibility, i.e. it should be easy to add a new
   table type for a project without needing to patch the core crate or maintain a
   fork.
@@ -37,7 +49,7 @@ generation, and that approach has been successful for [fonttools-rs][].
 
 ## conversion to and from big-endian bytes
 
-Values in the binary tables are generally big-endian and may not be aligned to
+[Values used][data types] in the binary tables are big-endian and may not be aligned to
 word boundaries, and so have to be converted to the appropriate scalars when
 read (In this sense a font library can never be exactly 'zero-copy', although it
 can be zero-allocation, and support random access.)
@@ -83,13 +95,14 @@ over some sequence of bytes. The actual storage of the those bytes is hidden
 from the user, but it might be some bytes loaded from disk, a memory-mapped
 file, or an owned buffer.
 
-This type will need to have a lifetime, since in the case where the bytes are not
-owned we need to ensure that the referenced data is valid for as long as the
-`Buffer` exists.
+This type will need to have an explicit lifetime parameter, since in the case
+where the bytes are not owned we need to ensure that the referenced data is
+valid for as long as the `Buffer` exists.
 
 The `Buffer` type will provide a simple API for reading raw scalars from the
 underlying bytes, for creating new `Buffer` objects for sub-ranges of the bytes,
-and for otherwise navigating the byte stream.
+and for otherwise navigating the byte stream. This API will largely be adapted
+from the existing implementation of [`pinot::Buffer`].
 
 ```rust
 impl<'a> Buffer<'a> {
@@ -353,8 +366,9 @@ have already been demonstrated to be feasible; the challenge here will be
 largely to figure out a way to combine them in a sensible and ergonomic way.
 
 Outside of Rust, I think it will also be important to spend some quality time
-with HarfBuzz, to make sure there are not requirements of that use-case that I
-am overlooking.
+with [HarfBuzz][], to make sure there are not requirements of that use-case that I
+am overlooking; and of course [fonttools][] is the current choice for font
+compilation, and related tasks.
 
 
 # Schedule and time allocation
@@ -406,3 +420,7 @@ There are a few remaining things I am currently unsure about:
 
 [fonttools-rs]: https://github.com/simoncozens/fonttools-rs
 [pinot]: https://github.com/dfrg/pinot
+[`pinot::Buffer`]: https://github.com/dfrg/pinot/blob/7001393e7ef824ca99a7ed60a7592a9950a88230/src/parse/mod.rs#L16
+[fonttools]: https://fonttools.readthedocs.io/en/latest/index.html
+[HarfBuzz]: https://harfbuzz.github.io
+[data types]: https://docs.microsoft.com/en-us/typography/opentype/spec/otff#data-types
