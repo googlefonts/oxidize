@@ -25,7 +25,7 @@ Rust appears to offer us the ability to implement fast, safer code with developm
 1. Read/write use (compilers, utilities)
    * Performance is less critical here. We don't want to be *slow*, but we don't need the level of performance obsession shaping needs either.
 
-For read-only users we may need to support readonly mmap access. Crates like zerocopy and the like suggest this is possible. Establishing a clean pattern here should be tackled early ([poc exploration](https://github.com/rsheeter/rust_read_font)).
+For read-only users we may need to support readonly mmap access. Crates like zerocopy and the like suggest this is possible. Establishing a clean pattern here should be tackled early. https://github.com/googlefonts/oxidize/pull/3 proposes a path forward.
 
 ### Offer memory safety for text rendering 
 
@@ -78,3 +78,5 @@ Current guess at first steps (very open to debate):
 
 * https://security.googleblog.com/2021/09/an-update-on-memory-safety-in-chrome.html offers commentary on the feasibility of having Rust-like safety in C++
 * https://pngquant.org/rust.html offers an interesting example of a Rust migration of a small library
+* http://dtrace.org/blogs/bmc/2018/09/28/the-relative-performance-of-c-and-rust/ another interesting example
+
