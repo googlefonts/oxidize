@@ -42,7 +42,7 @@ HarfBuzz is the primary target. Some parts of FreeType used in Chrome and Androi
 
 ### A productive codebase
 
-We seek to provide a developer friendly codebase. For example, exploration of new structs for something COLRv1 should be readily achievable by forking and hacking around. That means the code needs to be simpler than todays C++ and as close as possible to Python level development velocity. To achieve this we will seek to establish an efficient pattern to support our two primary usage patterns. This will require that we:
+We seek to provide a developer friendly codebase. For example, exploration of new structs for something COLRv1 should be readily achievable by forking and hacking around. That means the code needs to be simpler than today's C++ and as close as possible to Python level development velocity. To achieve this we will seek to establish an efficient pattern to support our two primary usage patterns. This will require that we:
 
    * Stay DRY
       * Don't hand-write things twice, once for high performance readonly access and once for mutable access
