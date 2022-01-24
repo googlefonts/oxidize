@@ -28,6 +28,8 @@ README. In particular, we aim to determine whether the following goals are feasi
 
 ## additional goals
 
+- no-std support for parser: it should be possible to use the parser for shaping
+  code running in no-std envrionments.
 - A simple, clean API for parsing: this should be as good as a hand-written API
   such as in [pinot][].
 - A *reasonably* clean API for authoring: we don't expect this API to be used
@@ -281,8 +283,8 @@ directly from underlying bytes) but the other one is just a plain old Rust
 struct.
 
 We can bikeshed names later; for the purpose of this illustration let's adopt
-the pattern of naming these new types objects `${TYPE}Owned` where `${TYPE}` is
-the name of the previously defined object. So continuing our `avar` example, we
+the pattern of naming these new types `${TYPE}Owned` where `${TYPE}` is the name
+of the previously defined read-only type. So continuing our `avar` example, we
 get:
 
 ```rust
@@ -390,6 +392,9 @@ we can abandon the work if any particular phase is a failure:
    but it might still be quite a lot of typing. I’ll feel more comfortable
    giving this a time estimate after I’ve finished the previous items, but if I
    had to guess I would say ~12 weeks.
+4. Build some partial but realistic implementations of some tools, in order to
+   start evaluating performance and ergonomics. (2-12 weeks, depending on
+   exactly how realistic we get?)
 
 
 # Questions
@@ -411,7 +416,8 @@ There are a few remaining things I am currently unsure about:
   number of possible things in the spec, from a glyph identifier to an
   F2DOT14 to an Offset16, an FWORD, etc etc. My inclination would be to have
   newtypes for all distinct data types, but that might seem cumbersome to some
-  folks.
+  folks. (Current expectation is that we will rely heavily on types, and see if
+  this causes real-world problems.)
 - Certain collections are heterogeneous, such as the different subtable types in a
   layout table. Can we generate nice code that represents these types using
   enums where appropriate?
