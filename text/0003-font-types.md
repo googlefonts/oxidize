@@ -358,7 +358,7 @@ otspec and otspec-macros. This is a set of crates by Simon Cozens that are
 focused on the compilation case (data is stored in native rust types and
 converted to raw bytes during serialization and deserialization) but it uses a
 system of macros to generate that IO code, to good effect. The second of these
-is Chad Brokow’s [pinot][], which is an existing
+is Chad Brokaw’s [pinot][], which is an existing
 zero-copy OpenType parser intended to be used for shaping.
 
 Between these two projects, the majority of the goals i have for this project
