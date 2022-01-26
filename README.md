@@ -78,13 +78,7 @@ Current guess at first steps (very open to debate):
 
 ### zerocopy
 
-As a shorthand, we use the term `zerocopy` to describe some desired properties of the font parsing API:
-
-* Reads of objects `n` bytes in size should consume no more than `n` bytes of font data
-* When possible, aggregates should be represented by a reference to a struct or slice that aliases font data
-* When necessary, bounds checking should be applied at the broadest possible scope
-
-Ideally, the majority of scalar reads should generate the most efficient `load + byteswap` sequence of instructions for the target platform.
+The direct reading/writing of scalars and, wherever possible, aggregates (structs and slices) through reinterpretation of pointers to raw bytes in memory.
 
 ## References
 
