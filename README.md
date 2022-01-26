@@ -74,6 +74,18 @@ Current guess at first steps (very open to debate):
 3. Build next-gen fontmake, converting parts to Rust and enabling parallelism
    * Guessing we would either do a good interchange format ([flatfont](https://github.com/googlefonts/flatfont)?) + ninja OR a Rust based executor using something like Rayon
 
+## Definitions
+
+### zerocopy
+
+As a shorthand, we use the term `zerocopy` to describe some desired properties of the font parsing API:
+
+* Reads of objects `n` bytes in size should consume no more than `n` bytes of font data
+* When possible, aggregates should be represented by a reference to a struct or slice that aliases font data
+* When necessary, bounds checking should be applied at the broadest possible scope
+
+Ideally, the majority of scalar reads should generate the most efficient `load + byteswap` sequence of instructions for the target platform.
+
 ## References
 
 * https://security.googleblog.com/2021/09/an-update-on-memory-safety-in-chrome.html offers commentary on the feasibility of having Rust-like safety in C++
