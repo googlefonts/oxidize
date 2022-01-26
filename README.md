@@ -74,6 +74,12 @@ Current guess at first steps (very open to debate):
 3. Build next-gen fontmake, converting parts to Rust and enabling parallelism
    * Guessing we would either do a good interchange format ([flatfont](https://github.com/googlefonts/flatfont)?) + ninja OR a Rust based executor using something like Rayon
 
+## Definitions
+
+### zerocopy
+
+The direct reading/writing of scalars and, wherever possible, aggregates (structs and slices) through reinterpretation of pointers to raw bytes in memory.
+
 ## References
 
 * https://security.googleblog.com/2021/09/an-update-on-memory-safety-in-chrome.html offers commentary on the feasibility of having Rust-like safety in C++
