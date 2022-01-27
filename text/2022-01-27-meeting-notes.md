@@ -74,6 +74,8 @@ For offset graphs, e.g. layout
       * Raph noted you could fuzz this
          * shape on whole font, shape on subset font, is same?
    * Between Behdad and Garret get the part upstream of the repacker documented, https://github.com/googlefonts/oxidize/issues/8
+      * serializer design: https://goo.gl/bHvnTn
+      * subsetter design: https://goo.gl/Qy3Eqc
    * TODO: Garret volunteers to give a talk on the repacker
 
 Accelerator
