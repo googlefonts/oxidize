@@ -18,6 +18,15 @@ Rust appears to offer us the ability to implement fast, safer code with developm
 
 ## Goals
 
+Our priorities, higher priority items first, are:
+
+| What | Why |
+| --- | --- |
+| Minimal or no unsafe, fast, memory-efficient | If it's not fast enough or it hogs memory nobody will ship it. We would accept unsafe - that we can convince ourselves to be safe - if it got us substantial perf. We're not specifically aiming for `#![forbid(unsafe_code)]`, though it would be nice. |
+| Ergonomic, hackable | Ergonomic: friendly to consumers, idiomatic wherever possible. Hackable: friendly to developers modifying the code |
+
+Taken from discussion [here](https://github.com/googlefonts/oxidize/issues/10#issuecomment-1024769804).
+
 ### Support both our primary usage patterns
 
 1. Performance-critical read-only users (shaping, rasterization)
