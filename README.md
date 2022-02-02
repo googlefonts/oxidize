@@ -2,6 +2,17 @@
 
 Wherein we contemplate moving shaping, rasterization, font compilation, and general font inspection and manipulation from Python & C++ to Rust.
 
+## Table of Contents
+
+- [Why](#why)
+- [Goals](#goals)
+   - [Support both our primary usage patterns](#support-both-our-primary-usage-patterns)
+   - [Offer memory safety for text rendering](#offer-memory-safety-for-text-rendering)
+   - [A productive codebase](#a-productive-codebase)
+   - [Prefer incremental delivery, early production use](#prefer-incremental-delivery-early-production-use)
+- [Definitions](#definitions)
+- [References](#references) 
+
 ## Why
 
 We currently rely C++ for anything high performance, e.g. shaping or subsetting, and Python for general purpose manipulation. The results are exactly what you'd expect:
