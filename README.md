@@ -91,6 +91,11 @@ The direct reading/writing of scalars and, wherever possible, aggregates (struct
 
 ## References
 
+* [HarfBuzz](https://github.com/harfbuzz/harfbuzz) is a world class high performance text shaper that makes extensive use of zerocopy-style access. In contemplating converting it to Rust there are a few key references to help in understanding the source:
+   * hb-subset [design doc](https://goo.gl/Qy3Eqc)
+      * Table packing (the hard part!) [design doc](https://goo.gl/bHvnTn) 
+      * [Serialization](https://github.com/harfbuzz/harfbuzz/blob/main/docs/serializer.md) explains how graphs are handled during subsetting
+      * [Repacker](https://github.com/harfbuzz/harfbuzz/blob/main/docs/repacker.md) explains how layout tables are packed
 * https://security.googleblog.com/2021/09/an-update-on-memory-safety-in-chrome.html offers commentary on the feasibility of having Rust-like safety in C++
 * https://pngquant.org/rust.html offers an interesting example of a Rust migration of a small library
 * http://dtrace.org/blogs/bmc/2018/09/28/the-relative-performance-of-c-and-rust/ another interesting example
