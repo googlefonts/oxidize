@@ -214,7 +214,11 @@ but is not trivially adaptable to the compilation & modification case.
 I am very happy with the approach of doing lots of automatic code generation; in
 the majority of cases I have been able to express the basic logic of a given
 table without much difficulty, and in cases where a table had some particularly
-tricky representation, I've been able to fall back on manual processing.
+tricky representation, I've been able to fall back on manual processing: for
+instance in the glyf table, the exact size and location of the
+[flags, xCoordinates, and yCoordinates][simple glyph] arrays can only be
+determined by examining them. In this case, we just [store the raw bytes][glyph raw]
+for these arrays together, and [interpret them during parsing][glyph interpret].
 
 I believe there is room to add additional functionality to the codegen tools:
 for instance we could annotate offsets to include their source and target type
@@ -391,6 +395,9 @@ autocomplete for these generated methods.
 [explore-font-types]: https://github.com/cmyr/explore-font-types
 [text files]: https://github.com/cmyr/explore-font-types/blob/main/resources/tables/maxp.txt
 [tables]: https://github.com/cmyr/explore-font-types/tree/main/font-tables/src/tables
+[simple glyph]: https://docs.microsoft.com/en-us/typography/opentype/spec/glyf#simple-glyph-description
+[glyph raw]: https://github.com/cmyr/explore-font-types/blob/161f5d455b9b667a28ef2c8ad793003cc8b42a16/font-tables/src/tables/glyf.rs#L44-L45
+[glyph interpret]: https://github.com/cmyr/explore-font-types/blob/161f5d455b9b667a28ef2c8ad793003cc8b42a16/font-tables/src/tables/glyf.rs#L275-L278
 
 
 
