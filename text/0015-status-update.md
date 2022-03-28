@@ -341,6 +341,9 @@ instance we could track offsets by ids, and then keep track of the location of
 the offsets as we write tables into a shared buffer, rewriting them later as
 needed. This will need more thought, experimentation, and discussion.
 
+**status** *this is the next major objective; I expect to have something to
+report in the first week or two of May*.
+
 ### evaluating current performance
 
 It may also be useful to get some concrete numbers on the efficiency of the
@@ -354,6 +357,11 @@ that our approach needs to be fundamentally rethought.
 
 I've also resisted this because I'm not sure of exactly what we should measure.
 In any case, it is something we will want to do at some point.
+
+**status** *this is deferred, for now. Profiling will require us to write a
+non-trivial amount of code on top of the generated code, and the exact details
+of the generated code may change during the work on mutability; I would prefer
+to keep things as slim as possible while codegen is being iterated on.
 
 ### further refinements
 
@@ -369,6 +377,8 @@ generate lots of methods and type definitions that do not actually exist in any
 of our source files. This makes it harder for users to understand what is going
 on, and it also confuses tools like IDEs, which often cannot provide
 autocomplete for these generated methods.
+
+**status** *deferred: this is interesting, but is not on the critical path*
 
 ## To discuss
 
