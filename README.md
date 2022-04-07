@@ -110,4 +110,5 @@ The direct reading/writing of scalars and, wherever possible, aggregates (struct
 * https://security.googleblog.com/2021/09/an-update-on-memory-safety-in-chrome.html offers commentary on the feasibility of having Rust-like safety in C++
 * https://pngquant.org/rust.html offers an interesting example of a Rust migration of a small library
 * http://dtrace.org/blogs/bmc/2018/09/28/the-relative-performance-of-c-and-rust/ another interesting example
+* https://wiki.mozilla.org/Oxidation
 
