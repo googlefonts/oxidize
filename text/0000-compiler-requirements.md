@@ -2,7 +2,7 @@
 
 ## Current State
 
-The entire font compilation pipeline is written in Python, with some parts being written in Cython for speed.
+Our current source code to [OpenType specification](https://docs.microsoft.com/en-us/typography/opentype/spec/) font object code compiler is a Python programming language-based solution with a command line client executable ([`fontmake`](https://github.com/googlefonts/fontmake)) that is supported with Python libraries required for I/O, source file lexing/parsing, intermediate code generation, optimization, code generation, and error handling.  Some components of the pipeline are written in Cython for improved performance. The executable and libraries will be referred to as the "Python compiler pipeline" in this document.
 
 ### Current Tools
 
