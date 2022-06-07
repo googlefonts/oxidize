@@ -36,6 +36,16 @@ The Python library support requirements for font compilation include:
 - [compreffor]()
 - [ttfautohint-py]()
 
+### Object Code Specifications
+
+- otf
+- otf-cff2
+- ttf
+- ttf-interpolatable
+- otf-interpolatable
+- OpenType variable font ttf format
+- OpenType variable font cff2 format
+
 ### Key Limitations
 
 * Python is bad at embarrasingly parallel tasks like instance generation and glyph compilation due to overhead and lacking multicore facilities.
