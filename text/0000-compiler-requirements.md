@@ -18,6 +18,24 @@ Python compiler pipeline source code format support currently includes the follo
 
 fontmake. It's the glue that binds together ufo2ft, fontTools and some other codebases to take any of the usual font formats (UFOs, Designspace + UFOs and Glyphs.app files) and produce font binaries (TTF, CFF(2); static, interpolated static, variable).
 
+### Python Compiler Pipeline Libraries
+
+The Python library support requirements for font compilation include:
+
+- [fonttools](): I/O, lexing/parsing, intermediate code generation, optimization, code generation
+- [cu2qu](): intermediate code optimization
+- [glyphsLib](): I/O, lexing/parsing
+- [ufo2ft](): 
+- [MutatorMath](): linear interpolation calculation
+- [fontMath]()
+- [defcon]()
+- [booleanOperations]()
+- [ufoLib2]()
+- [attrs]()
+- [cffsubr]()
+- [compreffor]()
+- [ttfautohint-py]()
+
 ### Key Limitations
 
 * Python is bad at embarrasingly parallel tasks like instance generation and glyph compilation due to overhead and lacking multicore facilities.
