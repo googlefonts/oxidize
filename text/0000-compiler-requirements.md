@@ -48,14 +48,14 @@ The Python library support requirements for font compilation include:
 
 ### Key Limitations
 
-* Python is bad at embarrasingly parallel tasks like instance generation and glyph compilation due to overhead and lacking multicore facilities.
-* The memory consumption of the compilation process can hinder the amount of build processes running in parallel.
-* It's easy to run into performance problems with OpenType Layout table repacking, which quickly consumes a large part of the compile time.
-* Codebases have grown organically by adding new things on top, some parts are byzantine and hard to change, making optimizations or rearranging code paths hard.
-    * VF generation requires compiling all masters fully and then merging them, instead of generating variable data directly.
-    * fontmake is underloved from a maintenance perspective, with some low hanging performance fruits continuing to hang.
-    * The layering of fontmake → ufo2ft → fontTools makes changing the architecture hard. User-relevant options need to be made available and passed through all layers, e.g. GPOS compression recently.
-    * Compilation of e.g. Glyphs.app files requires converting them into UFOs because ufo2ft can only compile those, which runs into impedance mismatches and is highly fragile and error-prone.
+- Python is bad at embarrasingly parallel tasks like instance generation and glyph compilation due to overhead and lacking multicore facilities.
+- The memory consumption of the compilation process can hinder the amount of build processes running in parallel.
+- It's easy to run into performance problems with OpenType Layout table repacking, which quickly consumes a large part of the compile time.
+- Codebases have grown organically by adding new things on top, some parts are byzantine and hard to change, making optimizations or rearranging code paths hard.
+  - VF generation requires compiling all masters fully and then merging them, instead of generating variable data directly
+  - fontmake is underloved from a maintenance perspective, with some low hanging performance fruits continuing to hang.
+  - The layering of fontmake → ufo2ft → fontTools makes changing the architecture hard. User-relevant options need to be made available and passed through all layers, e.g. GPOS compression recently
+  - Compilation of e.g. Glyphs.app files requires converting them into UFOs because ufo2ft can only compile those, which runs into impedance mismatches and is highly fragile and error-prone.
 
 ## What Do We Need?
 
