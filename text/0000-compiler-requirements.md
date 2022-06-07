@@ -61,6 +61,14 @@ The Python library support requirements for font compilation include:
 
 An at least 10x faster compiler using less memory.
 
+### Must Have
+
+### Good to Have
+
+### Someday
+
+### Out of Scope
+
 ## Why Do We Need It?
 
 Projects like Noto take 30+ minutes to compile completely, and a certain secret font project takes 5+ minutes to compile even with Pypy. Given how fickle font sources are and the experimentation and scripting needed to achieve certain design goals, this severly hinders incremental improvements during font design and engineering. Additionally, the resource waste is a problem for paid-for continuous integration.
