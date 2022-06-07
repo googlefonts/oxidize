@@ -4,6 +4,16 @@
 
 Our current source code to [OpenType specification](https://docs.microsoft.com/en-us/typography/opentype/spec/) font object code compiler is a Python programming language-based solution with a command line client executable ([`fontmake`](https://github.com/googlefonts/fontmake)) that is supported with Python libraries required for I/O, source file lexing/parsing, intermediate code generation, optimization, code generation, and error handling.  Some components of the pipeline are written in Cython for improved performance. The executable and libraries will be referred to as the "Python compiler pipeline" in this document.
 
+### Source Formats and Specifications
+
+Python compiler pipeline source code format support currently includes the following:
+
+- [Adobe OpenType Feature File Specification](https://adobe-type-tools.github.io/afdko/OpenTypeFeatureFileSpecification.html): specifies typographic layout features
+- [Designspace file format](https://fonttools.readthedocs.io/en/latest/designspaceLib/index.html): a serialized data format specified in XML
+- Glyphs file format: a serialized data format specified in ASCII plist format, with  fields that include Adobe OpenType Feature File Specification source code
+- [Monotype Source Data Format for OpenType Layout Tables](https://monotype.github.io/OpenType_Table_Source/otl_source.html): specifies typographic layout features
+- [Unified Font Object file format](https://unifiedfontobject.org/): a serialized data format specified in a combination of XML files, XML formatted property list  files, and Adobe OpenType Feature File Specification files
+
 ### Current Tools
 
 fontmake. It's the glue that binds together ufo2ft, fontTools and some other codebases to take any of the usual font formats (UFOs, Designspace + UFOs and Glyphs.app files) and produce font binaries (TTF, CFF(2); static, interpolated static, variable).
