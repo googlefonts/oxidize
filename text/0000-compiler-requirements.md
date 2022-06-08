@@ -57,6 +57,10 @@ The Python library support requirements for font compilation include:
   - The layering of fontmake → ufo2ft → fontTools makes changing the architecture hard. User-relevant options need to be made available and passed through all layers, e.g. GPOS compression recently
   - Compilation of e.g. Glyphs.app files requires converting them into UFOs because ufo2ft can only compile those, which runs into impedance mismatches and is highly fragile and error-prone.
 
+## How Do We Define the "Slow Compile"?
+
+The term "slow compilation" is associated with the absolute wall clock time encountered by a user during the source to object code compilation process.  This issue is confounded across projects by the different time-intensive areas of compiler execution.  For one project, "slow compilation" may be the result of a massive glyph set across a small number of build artifact formats, and in another it might be due to highly computation-intensive requirements across a compile with many font artifacts of different formats.  A number of engineers have encountered fontmake compiles in excess of 10 minutes, and in some circumstances, well in excess of 60 minutes for a font family. This area requires further investigation to understand the distribution of expected compile times and factors that influence the wall clock time experienced by a user ([#25](https://github.com/googlefonts/oxidize/issues/25)).  High-end outliers will be useful to investigate as test cases for additional diagnostics and optimization strategies ([#24](https://github.com/googlefonts/oxidize/issues/24)).
+
 ## What Do We Need?
 
 An at least 10x faster compiler using less memory.
