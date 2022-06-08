@@ -16,7 +16,7 @@ Python compiler pipeline source code format support currently includes the follo
 
 ### Current Tools
 
-fontmake. It's the glue that binds together ufo2ft, fontTools and some other codebases to take any of the usual font formats (UFOs, Designspace + UFOs and Glyphs.app files) and produce font binaries (TTF, CFF(2); static, interpolated static, variable).
+The `fontmake` executable is the glue that binds together ufo2ft, fontTools and some other codebases to take any of the usual font formats (UFOs, Designspace + UFOs and Glyphs.app files) and produce font binaries (TTF, CFF(2); static, interpolated static, variable).
 
 ### Python Compiler Pipeline Libraries
 
