@@ -20,21 +20,17 @@ The `fontmake` executable is the glue that binds together ufo2ft, fontTools and 
 
 ### Python Compiler Pipeline Libraries
 
-The Python library support requirements for font compilation include:
+High-level Python library support requirements for font compilation include:
 
-- [fonttools](): I/O, lexing/parsing, intermediate code generation, optimization, code generation
-- [cu2qu](): intermediate code optimization
-- [glyphsLib](): I/O, lexing/parsing
-- [ufo2ft](): 
-- [MutatorMath](): linear interpolation calculation
-- [fontMath]()
-- [defcon]()
-- [booleanOperations]()
-- [ufoLib2]()
-- [attrs]()
-- [cffsubr]()
-- [compreffor]()
-- [ttfautohint-py]()
+- [fonttools](): I/O, UFO format lexing/parsing, intermediate code generation, intermediate code optimization, code generation
+- [glyphsLib](): Glyphs format I/O, lexing/parsing, Glyphs to UFO format translation
+- [ufo2ft](): UFO source pre-processing, multi-stage intermediate code change
+
+There is a much more extensive dependency chain associated with each library.
+
+References:
+
+- [What Happens When You Compile a Variable Font](https://simoncozens.github.io/compiling-variable-fonts/) (@simoncozens)
 
 ### Object Code Specifications
 
