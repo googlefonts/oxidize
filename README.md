@@ -102,6 +102,14 @@ The direct reading/writing of scalars and, wherever possible, aggregates (struct
 
 ## References
 
+### Internal
+
+References within this repository.
+
+* [Simon Cozens parallel font compilation experiments](text/2022-05-10-parallel-font-compile-experiments.md)
+
+### External
+
 * [HarfBuzz](https://github.com/harfbuzz/harfbuzz) is a world class high performance text shaper that makes extensive use of zerocopy-style access. In contemplating converting it to Rust there are a few key references to help in understanding the source:
    * hb-subset [design doc](https://goo.gl/Qy3Eqc)
       * Table packing (the hard part!) [design doc](https://goo.gl/bHvnTn) 
