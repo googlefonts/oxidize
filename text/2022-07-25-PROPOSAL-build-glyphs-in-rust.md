@@ -41,7 +41,7 @@ in fontmake from Python to Rust.
 * Do NOT use the static TTFs at master locations to build glyph tables.
   * the static TTFs can still exist, but their glyph work should be brought as close as possible to zero (empty glyphs?)
 
-The next step is to get approval from the fontmake owners to make such changes. @anthrotype basically :D
+The next step is to get approval from the fontmake owners to make such changes. @anthrotype basically :D **2022-07-26** APPROVED
 
 ## Context
 
