@@ -58,8 +58,8 @@ it was a relatively simple way to get fontmake to support VF. In the end we shou
 A concrete example may help, consider the N in [Josefin Slab](https://fonts.google.com/specimen/Josefin+Slab)
 (https://github.com/TypeNetwork/Josefinslab) upright:
 
-* [sources/JosefinSlab-Thin.ufo/glyphs/N_.glif](https://github.com/davelab6/josefinslab/blob/master/sources/JosefinSlab-Thin.ufo/glyphs/N_.glif) defines the curve at thin (N)
-* [sources/JosefinSlab-Bold.ufo/glyphs/N_.glif](https://github.com/davelab6/josefinslab/blob/master/sources/JosefinSlab-Bold.ufo/glyphs/N_.glif) defines the curve at bold (N)
+* [sources/JosefinSlab-Thin.ufo/glyphs/N_.glif](https://github.com/davelab6/josefinslab/blob/master/sources/JosefinSlab-Thin.ufo/glyphs/N_.glif) defines the outline contours at thin (N)
+* [sources/JosefinSlab-Bold.ufo/glyphs/N_.glif](https://github.com/davelab6/josefinslab/blob/master/sources/JosefinSlab-Bold.ufo/glyphs/N_.glif) defines the outline contours at bold (N)
 * [sources/JosefinSlab.designspace](https://github.com/davelab6/josefinslab/blob/master/sources/JosefinSlab.designspace) defines how the parts fit together
    * JosefinSlab-Thin.ufo is at weight 14
    * JosefinSlab-Bold.ufo is at weight 83
