@@ -74,7 +74,7 @@ A concrete example may help, consider the N in [Josefin Slab](https://fonts.goog
 
 1. The amount of per glyph work, #glyphs * #masters, the primary predictor of build time
    * Makes sense, we do that work glyph by glyph ([varLib._add_gvar](https://github.com/fonttools/fonttools/blob/455158f2bfd9eae2135a5f85bb96549a545cac82/Lib/fontTools/varLib/__init__.py#L222)) and the per glyph work scales directly based on how many masters you have to worry about
-1. The complexity of layout, which for complex scripts can be a very significant factor for complex scripts
+1. The complexity of layout, which for complex scripts can be a very significant factor
 
 Paraphrasing things Simon Cozens’ has claimed for some time, you do three things:
 
