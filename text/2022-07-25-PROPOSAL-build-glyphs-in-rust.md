@@ -117,10 +117,13 @@ Two major paths to incrementally march fontmake toward the end goal come to mind
    * Under the hood Rust can take advantage of parallelism
    * We can avoid writing things to disk for handoff as we must with ninja
 
-Both options should work. For example, we could:
+Both options should work, and they are not exclusive. For step 1 the author believes Rust exposed to Python may make sense.
+For example, we could:
 
 1. Implement compilation of individual variable glyphs  from {glif files for glyph} in Rust
    * Optionally introducing an intermediary abstraction, with an eye to eventually compiling directly from glyphs instead converting glyphs to UFO first
+      * `babelfont-rs` in https://github.com/simoncozens/rust-font-tools shows an example of such an abstraction.
+        Depending on dependencies - we don't want multiple implementations of basic table types - we might be able to just reuse.
    * At a glance the trickiest part appears to be implementing IUP optimization
 1. Implement parallel compilation of many glyphs at once in Rust
 1. Alter the fontmake master compilation process to (initially opt-in):
