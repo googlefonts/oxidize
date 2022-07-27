@@ -124,9 +124,32 @@ Both options should work. For example, we could:
    * At a glance the trickiest part appears to be implementing IUP optimization
 1. Implement parallel compilation of many glyphs at once in Rust
 1. Alter the fontmake master compilation process to (initially opt-in):
-   * Exclusively produce blank or placeholder glyphs in the per-master TTF files
-   * Build the final VF
-   * Invoke Rust to compile the final variable glyphs directly into the final VF
+   * Invoke Rust to compile the final glyphs *before* the per-master TTF generation, building glyphs and metrics:
+      * `glyf/loca, gvar`
+      * `hmtx,vmtx`
+   * Table relationships:
+      * `[vh]mtx` needs bbox for lsb and so makes sense to build with glyphs
+      * `hhea` needs some min/max stuff, we can compute with FontTools or capture into an intermediate state when building glyphs
+      * `[hv]var` requires final `[hv]mtx`
+         * For step 1 suggest just leaving this in Python so we only have to worry about tuple variation stores
+   * Rust will need to handle mixed-composite glyph decomposition and computation of interpolation-friendly quadratics from cubics
+      * See ufo2ft filters, called by the ufo2ft preProcessor ufo2ft.filters.decomposeComponents and ufo2ft.filters.cubicToQuadratic
+      * Kurbo [knows how](https://docs.rs/kurbo/latest/kurbo/fn.cubics_to_quadratic_splines.html) to compute quads from cubics but perhaps not interpolation friendly ones. Maybe it could learn?
+   * Do not process glyphs when building per-master TTF files
+      * Just have a flag to turn off glyph processing, make blanks?
+      * Add a filter to wipe out `glyph.contours` and `glyph.components`?
+
+      ```python
+      # Example courtesy of @anthrotype
+      class NukeGlyphsFilter(BaseFilter):
+          """A filter that removes all outlines and components."""
+          def filter(self, glyph):
+              glyph.contours = []
+              glyph.components = []
+              return True
+      ```
+
+   * Glue parts together to create the final VF
 
 Switching feature compilation would be similar. Building a full Rust feature compiler is a larger chunk of work with lower impact so doing glyphs first makes sense.
 
