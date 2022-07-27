@@ -142,6 +142,7 @@ Implementation notes:
    * Rust will need to handle mixed-composite glyph decomposition and computation of interpolation-friendly quadratics from cubics
       * See ufo2ft filters, called by the ufo2ft preProcessor ufo2ft.filters.decomposeComponents and ufo2ft.filters.cubicToQuadratic
       * Kurbo [knows how](https://docs.rs/kurbo/latest/kurbo/fn.cubics_to_quadratic_splines.html) to compute quads from cubics but perhaps not interpolation friendly ones. Maybe it could learn?
+      * @simoncozens notes code for this exists in https://github.com/simoncozens/fonticulus/blob/a1f7748c40189be02d69107fce1ef0a755616397/src/glyph.rs#L51-L115
    * Do not process glyphs when building per-master TTF files
       * Just have a flag to turn off glyph processing, make blanks?
       * Add a filter to wipe out `glyph.contours` and `glyph.components`?
