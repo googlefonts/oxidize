@@ -89,8 +89,18 @@ Since we convert glyphs files to UFO lets focus on how a UFO should build (the a
    1. For Josefin Slab, process all N_.glif files together to produce the glyph and varstore you need for just N
       1. `f(all N_.gif, JosefinSlab.designspace) → glyf,gvar for the N`
    1. Merge all the feature files and compile them
-      1. Shouldn't need final outlines to compute features
-      1. `f(groups.plist, kerning.plist, features.fea, glyphs/contents.plist) → layout table(s)`
+      1. We do not need outlines to compute features
+         1. If fontTools.feaLib implements vmtx/VORG overrides in features.fea we would, per @anthrotype.
+            * outlines would be used to retrieve (glyf) or compute (CFF) the bbox.yMax
+            * bbox.yMax is needed to calculate top side bearings and vertical origin. 
+            * https://github.com/fonttools/fonttools/pull/2704.
+         1. If we do glyph work first we have them anyway, just means we can't build features parallel with glyphs
+      1. To compile features we need, in UFO terms:
+         1. `groups.plist`
+         1. `kerning.plist`
+         1. `features.fea`
+         1. `glyphs/contents.plist`
+      
 1. After all glyphs are done, merge per-glyph parts to form final glyf,gvar
    1. This needn't wait on feature file compilation, though it likely could without that much harm
 1. Merge the final glyph parts and layout, with some care to ensure gids align
