@@ -117,8 +117,12 @@ Two major paths to incrementally march fontmake toward the end goal come to mind
    * Under the hood Rust can take advantage of parallelism
    * We can avoid writing things to disk for handoff as we must with ninja
 
-Both options should work, and they are not exclusive. For step 1 the author believes Rust exposed to Python may make sense.
-For example, we could:
+Both options should work, and they are not exclusive.
+Used together they could give us very fast *incremental* compile.
+Incremental is out of scope for step 1.
+For step 1 the author believes Rust exposed to Python may make sense, and will provide building blocks for future work.
+
+Implementation notes:
 
 1. Implement compilation of individual variable glyphs  from {glif files for glyph} in Rust
    * Optionally introducing an intermediary abstraction, with an eye to eventually compiling directly from glyphs instead converting glyphs to UFO first
