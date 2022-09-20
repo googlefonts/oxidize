@@ -119,4 +119,6 @@ References within this repository.
 * https://pngquant.org/rust.html offers an interesting example of a Rust migration of a small library
 * http://dtrace.org/blogs/bmc/2018/09/28/the-relative-performance-of-c-and-rust/ another interesting example
 * https://wiki.mozilla.org/Oxidation
+* https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/
+
 
