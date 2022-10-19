@@ -102,6 +102,10 @@ The direct reading/writing of scalars and, wherever possible, aggregates (struct
 
 ## References
 
+### Where's the code?
+
+* https://github.com/googlefonts/fontations
+
 ### Internal
 
 References within this repository.
