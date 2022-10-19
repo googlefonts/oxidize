@@ -12,6 +12,9 @@ Wherein we contemplate moving shaping, rasterization, font compilation, and gene
    - [Prefer incremental delivery, early production use](#prefer-incremental-delivery-early-production-use)
 - [Definitions](#definitions)
 - [References](#references) 
+   - [Where is the code?](#wheres-the-code)
+   - [Internal](#internal) - references within this repository
+   - [External](#external) - references outside this repository
 
 ## Why
 
