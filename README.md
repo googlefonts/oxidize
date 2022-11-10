@@ -107,7 +107,8 @@ The direct reading/writing of scalars and, wherever possible, aggregates (struct
 
 ### Where's the code?
 
-* https://github.com/googlefonts/fontations
+* https://github.com/googlefonts/fontations - core font read/write crates
+* https://github.com/googlefonts/fontmake-rs - Rust font compiler
 
 ### Internal
 
