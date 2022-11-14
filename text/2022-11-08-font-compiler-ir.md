@@ -115,7 +115,8 @@ struct Font
   upem
   axes: Vec<Axis>
 
-// TODO: do we really need "discrete" axes? - designspace 5.0
+// TODO: "discrete" axes (designspace 5.0)
+// Per @madig "a DSv5 can capture family-wide information like STAT that would have to be duplicated into continuous design spaces"
 enum AxisRange {
   Continuous(min, max, default)
   Discrete(Vec<f32>)  // e.g. Italic
