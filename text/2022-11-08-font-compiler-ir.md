@@ -92,6 +92,14 @@ Glyphs:
 - Plus "special" layers that have attributes
   - For example, "brace" layers to define intermediate masters for specific glyphs
 
+Fontra, per @justvanrossum:
+
+- Distinguishes "layers" and "sources".
+   - A layer refers to a glyph instance
+   - A source specifies the designspace location and refers to a layer.
+   - This extra indirection allows a layer to be used by multiple sources, which is a common pattern to tame designspaces that otherwise may have "gaps", and is a necessary feature when implementing HOI-like behavior.
+- See dataclasses based schema at https://github.com/BlackFoundryCom/fontra/blob/main/src/fontra/core/classes.py
+
 ## Sketch
 
 Based on [ufo3](https://unifiedfontobject.org/versions/ufo3/), [babelfont-rs](https://github.com/simoncozens/babelfont-rs) and discussion in this repo. The
@@ -123,12 +131,15 @@ type DesignSpaceLocation = HashMap<Tag, f32>
 // https://github.com/simoncozens/rust-font-tools/blob/main/babelfont-rs/src/glyph.rs 
 // an obvious unit of work for parallel execution
 // Note that this is sparse, not tied to masters, and the definition keys need not match glyph to glyph
+// Name sources taken from discussion in https://github.com/googlefonts/oxidize/pull/37#discussion_r1020712365
 struct Glyph
   name
-  definitions: Map<DesignSpaceLocation, GlyphInstance>
+  sources: Map<DesignSpaceLocation, GlyphInstance>
 
 // a specific instance of a glyph
 // https://unifiedfontobject.org/versions/ufo3/glyphs/glif/
+// We may find we want a Fontra-style shape-ref to enable reuse by multiple sources
+// ^ might also facilitate nanoemoji-style shape reuse
 struct GlyphInstance
   advance
   outline: Vec<Shape>
@@ -192,6 +203,9 @@ TODO
 
 - [The Case for a Font Compiler IR](https://github.com/googlefonts/oxidize/blob/main/text/2022-11-14-why-ir.md)- why we should have IR at all
 - [Better Engineered Font Formats](https://docs.google.com/document/d/1CDDSqHPdjAcvw3r2im5DfPc9XXFA04FCJoqdBUx2B2M/edit)
+- Proposed changes to source and binary formats to enable variable components
+   - [Variable Components in UFO files](https://github.com/BlackFoundryCom/variable-components-in-ufo/)
+   - [glyf changes for Variable Components](https://github.com/harfbuzz/boring-expansion-spec/blob/glyf1/glyf1.md)
 - https://simoncozens.github.io/compiling-variable-fonts/
 - https://github.com/simoncozens/rust-font-tools
   - Some parts may be reusable, though we would require any binary font access go through https://github.com/googlefonts/fontations
