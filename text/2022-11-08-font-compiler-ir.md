@@ -1,4 +1,4 @@
-_Why_ is articulated in `TODO: link to dfrg's doc when posted`
+_Why_ is articulated in https://github.com/googlefonts/oxidize/blob/main/text/2022-11-14-why-ir.md.
 
 - [Goals](#goals)
   - [Potential future goals](#potential-future-goals)
@@ -11,6 +11,12 @@ _Why_ is articulated in `TODO: link to dfrg's doc when posted`
   - [Implementation notes](#implementation-notes)
   - [Test inputs](#test-inputs)
 - [References](#references)
+
+# Terminology
+
+[Intermediate representation](https://en.wikipedia.org/wiki/Intermediate_representation), IR henceforth,
+refers to a data structure used to represent source to facilitate further processing. In this document we
+mean the sources a font authoring tool produces that we compile to a binary font.
 
 # Goals
 
@@ -26,6 +32,8 @@ and incremental compilation.
 
 We should be able to optionally capture IR. IR should support human friendly (textual) and fast/compact (binary) representation (shamelessly copying ... I mean
 inspired by ... [LLVM IR](https://llvm.org/docs/Reference.html#llvm-ir), hopefully leaning on serde).
+
+This is very similar to the goals Behdad outlined for [Better-Engineered Font Formats](https://docs.google.com/document/d/1CDDSqHPdjAcvw3r2im5DfPc9XXFA04FCJoqdBUx2B2M/edit).
 
 ## Potential future goals
 
@@ -182,7 +190,8 @@ TODO
 
 # References
 
-- The Case for a Font Compiler IR- why we should have IR at all *TODO link it*
+- [The Case for a Font Compiler IR](https://github.com/googlefonts/oxidize/blob/main/text/2022-11-14-why-ir.md)- why we should have IR at all
+- [Better Engineered Font Formats](https://docs.google.com/document/d/1CDDSqHPdjAcvw3r2im5DfPc9XXFA04FCJoqdBUx2B2M/edit)
 - https://simoncozens.github.io/compiling-variable-fonts/
 - https://github.com/simoncozens/rust-font-tools
   - Some parts may be reusable, though we would require any binary font access go through https://github.com/googlefonts/fontations
