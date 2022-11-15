@@ -111,7 +111,7 @@ convey the general idea of a variable first, sparse first, structure broken apar
 // data common to the entire designspace
 // written to disk in one file
 // some of https://unifiedfontobject.org/versions/ufo3/fontinfo.plist/ 
-struct Font
+struct FontInfo
   upem
   axes: Vec<Axis>
 
