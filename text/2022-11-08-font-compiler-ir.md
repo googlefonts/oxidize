@@ -141,13 +141,13 @@ struct Glyph
 // https://unifiedfontobject.org/versions/ufo3/glyphs/glif/
 // We may find we want a Fontra-style shape-ref to enable reuse by multiple sources
 // ^ might also facilitate nanoemoji-style shape reuse
+// Per https://github.com/googlefonts/oxidize/pull/37#discussion_r1020712695 we split
+// contours and components despite UFO explicitly mixing them. RoboFont, defcon, and
+// ufoLib2 all separate them so we are in good company.
 struct GlyphInstance
   advance
-  outline: Vec<Shape>
-
-enum Shape
-  Contour(Contour)
-  Component(Component)
+  contours: Vec<Contour>
+  components: Vec<Component>
 
 // A set of features that need to be built together
 // written to disk in one file per group
