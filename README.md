@@ -26,7 +26,7 @@ We currently rely C++ for anything high performance, e.g. shaping or subsetting,
    * It's entirely normal to make a seemingly safe change and then see a stream of fuzzer bugs
    * Best thing ever in production, blindingly fast and low resource cost, fits infrastructure nicely. But scary due to lack of safety.
 
-Some logic ends up implemented in both languages. For example, when it became apparent the Python subsetter was too slow for both runtime serving and future projects like [progressive font enrichment](https://www.w3.org/TR/PFE-evaluation/) the [hb-subset](goo.gl/Qy3Eqc) project was born.
+Some logic ends up implemented in both languages. For example, when it became apparent the Python subsetter was too slow for both runtime serving and future projects like [progressive font enrichment](https://www.w3.org/TR/PFE-evaluation/) the [hb-subset](https://goo.gl/Qy3Eqc) project was born.
 
 Rust appears to offer us the ability to implement fast, safer code with development velocity in between Python and C++. This is a very appealing offer.
 
