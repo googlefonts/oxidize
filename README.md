@@ -105,7 +105,7 @@ The direct reading/writing of scalars and, wherever possible, aggregates (struct
 
 ## Where's the code?
 
-The following depicts, and links to, active projects and their relationships:
+The following depicts, and links to, active projects and their relationships (arrows indicate dependency):
 
 ```mermaid
 flowchart TD
