@@ -103,9 +103,7 @@ Current guess at first steps (very open to debate):
 
 The direct reading/writing of scalars and, wherever possible, aggregates (structs and slices) through reinterpretation of pointers to raw bytes in memory.
 
-## References
-
-### Where's the code?
+## Where's the code?
 
 The following depicts, and links to, active projects and their relationships:
 
@@ -143,6 +141,8 @@ flowchart TD
     click write-fonts "https://github.com/googlefonts/fontations/tree/main/write-fonts"
     click font-types "https://github.com/googlefonts/fontations/tree/main/font-types"
 ```
+
+## References
 
 ### Internal
 
