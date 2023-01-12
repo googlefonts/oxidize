@@ -107,8 +107,42 @@ The direct reading/writing of scalars and, wherever possible, aggregates (struct
 
 ### Where's the code?
 
-* https://github.com/googlefonts/fontations - core font read/write crates
-* https://github.com/googlefonts/fontmake-rs - Rust font compiler
+The following depicts, and links to, active projects and their relationships:
+
+```mermaid
+flowchart TD
+    subgraph Font Compiler
+        fontmake-rs
+    end
+    fontmake-rs --> read-fonts
+    fontmake-rs --> write-fonts
+    subgraph demo
+        otexplorer        
+    end
+    subgraph hypothetical
+        anyone-rendering-text
+    end
+    subgraph read
+        read-fonts    
+    end
+    subgraph write
+        write-fonts    
+    end
+    anyone-rendering-text --> read-fonts
+    write-fonts --> read-fonts
+    otexplorer --> read-fonts
+    subgraph common
+        font-types
+    end
+    
+    read-fonts --> common
+
+    click fontmake-rs "https://github.com/googlefonts/fontmake-rs"
+    click otexplorer "https://github.com/googlefonts/fontations/tree/main/otexplorer"
+    click read-fonts "https://github.com/googlefonts/fontations/tree/main/read-fonts"
+    click write-fonts "https://github.com/googlefonts/fontations/tree/main/write-fonts"
+    click font-types "https://github.com/googlefonts/fontations/tree/main/font-types"
+```
 
 ### Internal
 
