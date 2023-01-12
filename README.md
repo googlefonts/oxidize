@@ -11,8 +11,8 @@ Wherein we contemplate moving shaping, rasterization, font compilation, and gene
    - [A productive codebase](#a-productive-codebase)
    - [Prefer incremental delivery, early production use](#prefer-incremental-delivery-early-production-use)
 - [Definitions](#definitions)
-- [References](#references) 
-   - [Where is the code?](#wheres-the-code)
+- [Where is the code?](#wheres-the-code)
+- [References](#references)    
    - [Internal](#internal) - references within this repository
    - [External](#external) - references outside this repository
 
