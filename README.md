@@ -135,11 +135,11 @@ flowchart TD
     
     read-fonts --> common
 
-    click fontmake-rs "https://github.com/googlefonts/fontmake-rs"
-    click otexplorer "https://github.com/googlefonts/fontations/tree/main/otexplorer"
-    click read-fonts "https://github.com/googlefonts/fontations/tree/main/read-fonts"
-    click write-fonts "https://github.com/googlefonts/fontations/tree/main/write-fonts"
-    click font-types "https://github.com/googlefonts/fontations/tree/main/font-types"
+    click fontmake-rs "https://github.com/googlefonts/fontmake-rs" _blank
+    click otexplorer "https://github.com/googlefonts/fontations/tree/main/otexplorer" _blank
+    click read-fonts "https://github.com/googlefonts/fontations/tree/main/read-fonts" _blank
+    click write-fonts "https://github.com/googlefonts/fontations/tree/main/write-fonts" _blank
+    click font-types "https://github.com/googlefonts/fontations/tree/main/font-types" _blank
 ```
 
 ## References
