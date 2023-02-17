@@ -18,10 +18,12 @@ These are generally in one of two forms:
 which is embedded in our [test data](https://github.com/googlefonts/fontations/blob/12fe04eb7083faaf8972720629496c0ca9a4b6c5/read-fonts/src/tests/test_data.rs#L17).
 * Hand written and designed to test against a [curated collection of fonts](https://github.com/googlefonts/fontations/tree/main/resources/test_fonts). An example of this for the `STAT` table can be found [here](https://github.com/googlefonts/fontations/blob/12fe04eb7083faaf8972720629496c0ca9a4b6c5/read-fonts/src/tables/stat.rs#L13).
 
-### punchcut: loading and scaling of glyph outlines
+### skrifa: metadata processing and loading/scaling of glyph outlines
 
-Unlike `read-fonts`, the `punchcut` crate provides additional processing of the parsed data and the
-goal is to match the output of FreeType for loaded outlines
+Unlike `read-fonts`, the `skrifa` crate provides additional processing of the parsed data and the
+goal is to match the output of FreeType for metadata, metrics and loaded outlines.
+
+#### Glyph loading/scaling
 
 The testing strategy for this library is to use a pinned version of FreeType (currently 2.12.0) to generate
 a text file containing the outline data in both raw (contours, points and tags as defined in
@@ -31,6 +33,7 @@ decomposed path segment forms.
 Each outline in the text file is represented by the pattern:
 ```
 glyph <glyph-id> <font-size> <hint-mode>
+coords <coords>
 points <points>
 contours <contours>
 tags <tags>
@@ -41,6 +44,7 @@ With the following values:
 * `glyph-id`: the glyph indentifier
 * `font-size`: size in pixels per em. A size of 0 means unscaled
 * `hint-mode`: one of `none`, `full`, `light`, or `light-subpixel`
+* `coords`: space separated list of normalized design coordinates, one per axis
 * `points`: space separated list of points in `x, y` format
 * `contours` and `tags`: space separated list of integers representing contour end point 
     indices and tag bits, respectively
@@ -49,10 +53,16 @@ With the following values:
 
 The pattern ends with a single `-`.
 
-While testing, `punchcut` will read this text file and the associated font, loading each
+While testing, `skrifa` will read this text file and the associated font, loading each
 specified glyph according to the parameters and compare the outline data. This is done 
 for both raw outlines and paths, testing both our loading/scaling code and our path
 decomposition code.
+
+#### Metadata and metrics
+
+The exact formats haven't been determined yet, but we aim to do similar FreeType extraction for
+metadata and metrics. The specific concerns here are character map selection, reading localized
+strings and extracting font and glyph metrics.
 
 #### Exemplars
 
@@ -67,11 +77,3 @@ in glyphs that:
 
 This will be done with a python script to collect the appropriate glyphs from a large set of 
 fonts. These will be pared down to the interesting cases and added to our test font resources.
-
-### feta: font metadata 
-
-The `feta` crate is planned and is designed to provide a high level interface to font metadata such
-as font metrics, glyph metrics, localized strings, character mapping, etc.
-
-Due to its nature of processing the parsed data, testing for this crate will be similar to that of
-`punchcut` and details on the extracted data format will be added here when they are established.
