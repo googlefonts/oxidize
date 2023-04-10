@@ -34,5 +34,6 @@ Initial list from from https://github.com/google/fonts/issues/4772, captured her
 **Several sub-families building from same source:**
 - [Lexend](https://github.com/googlefonts/lexend)
 
-** Noto: **
+**Noto:**
+
 All sorts of fun stuff, probably most easily found via http://notofonts.github.io/noto.json
