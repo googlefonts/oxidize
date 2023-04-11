@@ -21,6 +21,9 @@ Initial list from from https://github.com/google/fonts/issues/4772, captured her
 - Send Flowers, https://github.com/googlefonts/send-flowers (single font family)
 - Castoro, [static font](https://github.com/TiroTypeworks/Castoro) (single font family but custom build)
 
+**CJK (lots of glyphs)**
+- MPLUS, https://github.com/coz-m/MPLUS_FONTS. Will have to read/play with build.py to produce something we can feed to fontmake-rs.
+
 **Normal VF families building from UFO/designspace file:**
 - [Kumbh Sans](https://github.com/xconsau/KumbhSans) 2 axes, wght, YOPQ
 
