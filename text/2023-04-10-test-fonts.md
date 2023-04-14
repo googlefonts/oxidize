@@ -2,6 +2,9 @@ Initial list from from https://github.com/google/fonts/issues/4772, captured her
 
 **Families which take a long time to compile:**
 - Roboto Serif, https://github.com/googlefonts/roboto-serif (~1hr with fontmake)
+   - 1 hr probably refers to the full build.sh time which builds *two* fonts
+   - To compare with fontmake-rs, build one using the same flags gftools would have, e.g. `time fontmake -m roboto-serif/sources/RobotoSerif.designspace -o variable --filter FlattenComponentsFilter --filter DecomposeTransformedComponentsFilter`
+      - On a fairly beefy machine ^ runs in 6 minutes
 - Material Symbols, https://github.com/google/material-design-icons (~2-3hr with custom chain) and its private 1P version
 - Google Sans (~15mins with fontmake)
 
