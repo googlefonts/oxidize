@@ -1,6 +1,6 @@
 # API for color outlines
 
-In order to support [COLRv1] (and v0) font, the
+In order to support [COLRv1] (and v0) fonts, the
 [skrifa](https://github.com/googlefonts/fontations/tree/main/skrifa)
 crate requires an API to expose a more sophisticated set of operations than
 are handled by the current [`Pen`](https://docs.rs/font-types/0.1.4/font_types/trait.Pen.html)
