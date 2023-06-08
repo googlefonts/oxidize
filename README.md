@@ -110,15 +110,18 @@ The graph below depicts, and links to (*warning* copy the links rather than clic
 ```mermaid
 flowchart TD
     subgraph Font Compiler
-        fontmake-rs
+        fontc
     end
-    fontmake-rs --> read-fonts
-    fontmake-rs --> write-fonts
-    subgraph demo
-        otexplorer        
+    fontc --> read-fonts
+    fontc --> write-fonts
+    
+    subgraph Typesetting Application
+         Chrome
     end
-    subgraph hypothetical
-        anyone-rendering-text
+    Chrome --> skrifa
+    
+    subgraph Load outlines and metadata
+        skrifa
     end
     subgraph read
         read-fonts    
@@ -126,9 +129,9 @@ flowchart TD
     subgraph write
         write-fonts    
     end
-    anyone-rendering-text --> read-fonts
-    write-fonts --> read-fonts
-    otexplorer --> read-fonts
+    
+    skrifa --> read-fonts
+    write-fonts --> read-fonts    
     subgraph common
         font-types
     end
