@@ -156,6 +156,7 @@ References within this repository.
 ### External
 
 * [Oxidize Introduction](https://docs.google.com/presentation/d/1kLB_BY7nSzNo07NrpvyJMxixGd4ULQTEEXjyO4KKM-E/edit?usp=sharing) slides from @cmyr on progress as of October 2022
+* https://github.com/drott 2023 BlinkOn [Safe and sound Rust Font Stack ](https://docs.google.com/presentation/d/1Vp8VOXbsw67mOleJTq0bYORNxkTwYpVh9F_7PS9IK5I/edit?usp=drivesdk) presentation
 * [HarfBuzz](https://github.com/harfbuzz/harfbuzz) is a world class high performance text shaper that makes extensive use of zerocopy-style access. In contemplating converting it to Rust there are a few key references to help in understanding the source:
    * hb-subset [design doc](https://goo.gl/Qy3Eqc)
       * Table packing (the hard part!) [design doc](https://goo.gl/bHvnTn) 
