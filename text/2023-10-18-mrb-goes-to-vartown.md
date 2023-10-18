@@ -1,4 +1,4 @@
-# Me B goes to Vartown
+# Mr B goes to Vartown
 
 Or, a brief history of font compilers. Or, why fontmake. Or, It happened at ATypI.
 
