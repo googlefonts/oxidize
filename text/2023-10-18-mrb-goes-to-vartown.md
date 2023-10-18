@@ -6,7 +6,15 @@ Written in 2023, mistakes are @rsheeter's fault. Anything useful came from someo
 
 The pseudonym Mr B is used because @rsheeter thinks its funny. YMMV.
 
-[TOC]
+* [ATypI 1976](#atypi-1976)
+* [Late 2013 to summer 2014](#late-2013-to-summer-2014)
+* [2014 to summer 2015](#2014-to-summer-2015)
+* [ATypI 2014](#atypi-2014)
+* [ATypI 2015](#atypi-2015)
+* [2016](#2016)
+* [ATypI 2016](#atypi-2016)
+* [2017..2022](#20172022)
+* [2023](#2023)
 
 ## ATypI 1976
 
