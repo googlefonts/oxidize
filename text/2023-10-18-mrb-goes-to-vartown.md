@@ -4,6 +4,8 @@ Or, a brief history of font compilers. Or, why fontmake. Or, It happened at ATyp
 
 Written in 2023, mistakes are @rsheeter's fault. Anything useful came from someone else.
 
+What happened between 1976 and 2013 is underdocumented. PRs welcome.
+
 The pseudonym Mr B is used because @rsheeter thinks its funny. YMMV.
 
 * [ATypI 1976](#atypi-1976)
