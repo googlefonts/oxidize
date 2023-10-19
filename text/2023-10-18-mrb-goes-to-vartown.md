@@ -24,6 +24,11 @@ In "Font Technology: Methods and Tools" Peter Karow mentions that in 1976 there 
 the IKARUS program having a new trick: it can interpolate. This is the earliest written mention
 of what ultimately becomes variable fonts the author has identified.
 
+## 2004
+
+Superpolator (https://superpolator.com/) appears to date back to 2004. Presumably some form of
+MutatorMath also existed.
+
 ## Late 2013 to summer 2014
 
 Google is working on Noto phase 3. So far we're collecting binaries.
@@ -57,8 +62,7 @@ fonts
 * [fontforge](https://fontforge.org/) exists, is open source, and has a compiler
    * It is not noted for being easy to work with
 
-FontTools has a lot of the hard parts, and is open source, Mr B decides to build on that. fontmake is born! It knows how to build
-variable fonts from inception.
+FontTools has a lot of the hard parts, and is open source, Mr B decides to build on that. fontmake is born! It knows how to build variable fonts from inception.
 
 * Mr B writes glyphsLib to read `.glyphs` plist files
 * Mr B teaches the system to build a TrueType outline based variable font
@@ -74,6 +78,7 @@ There are a few rough spots:
    * fontmake is using defcon which is built for use in editors
    * defcon uses ufoLib, the reference implementation of UFO by @typesupply
       * [ufoLib](https://fonttools.readthedocs.io/en/latest/ufoLib/index.html) lives on in FontTools
+      * Before defcon we used RoboFab (https://github.com/robotools/robofab)
    * [ufoLib2](https://github.com/fonttools/ufoLib2) is created to provide a more compiler-friendly UFO accessor
       * Built on top of ufoLib
 * Dependency excitement
@@ -84,10 +89,12 @@ To build these new fangled variable font things the `.designspace` file and [des
 (by @letterror) are born. It is merged into FontTools to mitigate dependency excitement and to retain the
 idea that FontTools can do all the basic font things in your life.
 
-The compiler initially uses MutatorMath. It takes compatible static fonts
+fontmake uses varLib to produce variable fonts. It takes compatible static fonts
 and merges them into a variable font because that lets you generate
 a variable font from existing statics. fontmake builds on this. @simoncozens [favorite part](https://simoncozens.github.io/compiling-variable-fonts/#merge)
-of font compilation is here!
+of font compilation has arrived!
+
+MutatorMath is used to produce instances.
 
 ## ATypI 2014
 
@@ -138,8 +145,7 @@ The size and complexity of variable fonts keeps increasing. fontmake keeps worki
 
 Many optimizations are applied to fontmake. Bits are cythonized, things happen in memory, ... users still wish it was faster.
 
-Somewhere in this period [MutatorMath](https://github.com/LettError/MutatorMath) is replaced by
-[varLib](https://fonttools.readthedocs.io/en/latest/varLib/index.html).
+MutatorMath begat https://github.com/LettError/ufoProcessor in 2017.
 
 ## 2023
 
