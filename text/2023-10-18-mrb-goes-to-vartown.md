@@ -84,7 +84,8 @@ To build these new fangled variable font things the `.designspace` file and [des
 (by @letterror) are born. It is merged into FontTools to mitigate dependency excitement and to retain the
 idea that FontTools can do all the basic font things in your life.
 
-varLib is built to take compatible static fonts and merge them into a variable font because that lets you generate
+The compiler initially uses MutatorMath. It takes compatible static fonts
+and merges them into a variable font because that lets you generate
 a variable font from existing statics. fontmake builds on this. @simoncozens [favorite part](https://simoncozens.github.io/compiling-variable-fonts/#merge)
 of font compilation is here!
 
@@ -92,12 +93,11 @@ of font compilation is here!
 
 In the fall of 2014 several key things are made public at ATypI Barcelona:
 
-* Mr B announces the intent to ship an open source compiler
+* Mr B announces the intent to ship many of the key pieces you'd need for an open source compiler [slides](https://github.com/behdad/slippy/blob/master/fonttools/fonttools_slides.py)
 * [MutatorMath](https://github.com/LettError/MutatorMath) goes open source
 * Adobe announces AFDKO will become open source
 
-Mutator math gives you everything you need to compute instances from a variable font. Now that's public and open source ... what if we
-did the interpolation on the client? Variable fonts as we know them are born.
+Mutator math gives you everything you need to compute instances from a variable font. Now that's public and open source ... what if we did the interpolation on the client? - this is essentially what todays variable fonts are.
 
 ## ATypI 2015
 
@@ -129,11 +129,17 @@ steals the show! The Cabal presumably does a victory lap.
 
 John Hudson writes the best known explanation of what the new fangled thing actually is in [Introducing OpenType Variable Fonts](https://medium.com/variable-fonts/https-medium-com-tiro-introducing-opentype-variable-fonts-12ba6cd2369).
 
+Mr B presents [slides](https://github.com/behdad/slippy/blob/master/fonttools2016/fonttools2016_slides.py) about the state
+of the open source build pipeline. The focus is Noto but what's being built is general purpose.
+
 ## 2017..2022
 
 The size and complexity of variable fonts keeps increasing. fontmake keeps working. Users wish it was faster and engineers wish it was simpler.
 
 Many optimizations are applied to fontmake. Bits are cythonized, things happen in memory, ... users still wish it was faster.
+
+Somewhere in this period [MutatorMath](https://github.com/LettError/MutatorMath) is replaced by
+[varLib](https://fonttools.readthedocs.io/en/latest/varLib/index.html).
 
 ## 2023
 
