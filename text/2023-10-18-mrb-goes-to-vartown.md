@@ -13,6 +13,7 @@ The pseudonym Mr B is used because @rsheeter thinks its funny. YMMV.
 * [Late 2013 to summer 2014](#late-2013-to-summer-2014)
 * [2014 to summer 2015](#2014-to-summer-2015)
 * [ATypI 2014](#atypi-2014)
+* [2015](#2015)
 * [ATypI 2015](#atypi-2015)
 * [2016](#2016)
 * [ATypI 2016](#atypi-2016)
@@ -90,9 +91,10 @@ To build these new fangled variable font things the `.designspace` file and [des
 (by @letterror) are born. It is merged into FontTools to mitigate dependency excitement and to retain the
 idea that FontTools can do all the basic font things in your life.
 
-fontmake uses varLib to produce variable fonts. It takes compatible static fonts
-and merges them into a variable font because that lets you generate
-a variable font from existing statics. fontmake builds on this. @simoncozens [favorite part](https://simoncozens.github.io/compiling-variable-fonts/#merge)
+Variable fonts can be built but it's painful. You run fontmake to produce ttf-interpolatable files then manually run
+varLib on them. Only a single axis of variation is supported so varLib is relatively simple.
+
+@simoncozens [favorite part](https://simoncozens.github.io/compiling-variable-fonts/#merge)
 of font compilation has arrived!
 
 MutatorMath is used to produce instances.
@@ -107,6 +109,12 @@ In the fall of 2014 several key things are made public at ATypI Barcelona:
 
 Mutator math gives you everything you need to compute instances from a variable font. Now that's public and open source ... what if we did the interpolation on the client? - this is essentially what todays variable fonts are.
 
+## 2015
+
+fontmake begins to come together. It can directly build variable fonts, you don't need a multi-stage manual pipeline.
+
+@brawer implements [gvar](https://learn.microsoft.com/en-us/typography/opentype/spec/gvar) in FontTools.
+
 ## ATypI 2015
 
 Mr B pitches this cool idea he has about client-side interpolation. Fonts that vary. We could call them variable fonts perhaps?
@@ -117,7 +125,10 @@ Mr B wishes he could have cool features in the font format, [OpenType BE](https:
 
 ## 2016
 
-We can build variable fonts but there are pain points.
+fontmake learns to directly create variable fonts from source. varLib learns to compute the deltas for multi-axis variable fonts, which means fontmake
+can build such fonts.
+
+That means we can build variable fonts, but there are pain points.
 
 * @twardoch thinks it would be cool to directly write variable features (https://github.com/adobe-type-tools/afdko/issues/153)
 * fontmake likes to write statics to disk before it merges them; it's slow
