@@ -9,6 +9,7 @@ What happened between 1976 and 2013 is underdocumented. PRs welcome.
 The pseudonym Mr B is used because @rsheeter thinks its funny. YMMV.
 
 * [ATypI 1976](#atypi-1976)
+* [2004](#2004)
 * [Late 2013 to summer 2014](#late-2013-to-summer-2014)
 * [2014 to summer 2015](#2014-to-summer-2015)
 * [ATypI 2014](#atypi-2014)
