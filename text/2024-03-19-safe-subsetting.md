@@ -119,6 +119,9 @@ HarfBuzz has domain-specific tuned sets. These seem likely to be worth porting, 
    * https://github.com/harfbuzz/harfbuzz/blob/main/src/hb-bit-set.hh
    * https://github.com/harfbuzz/harfbuzz/blob/main/src/hb-bit-set-invertible.hh 
    * https://github.com/harfbuzz/harfbuzz/blob/main/src/hb-set.hh
+   * https://github.com/harfbuzz/harfbuzz/blob/main/src/hb-algs.hh
+      * Esp fasthash functions
+      * Note also issues with int hashing mentioned [here](https://github.com/harfbuzz/harfbuzz/blob/3d455998bf2d48b333522e3f2bd72e720b5d7d5c/src/hb-algs.hh#L358)
 * Tests
    * https://github.com/harfbuzz/harfbuzz/blob/main/src/test-set.cc 
    * https://github.com/harfbuzz/harfbuzz/blob/main/test/api/test-set.c 
