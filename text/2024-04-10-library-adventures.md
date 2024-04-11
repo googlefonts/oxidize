@@ -26,4 +26,4 @@ Of the those which could not be built automatically:
 
 In all cases where the fonts could be successfully built, small caps families could be automatically derived from sources with one minor problem - in one family, the resulting font’s filename was not what it should have been. (Family name in name table was fine though.)
 
-One philosophical question which arises from the top 30 which did not build (unusual repo structure, unable to automatically find source files, etc.) : If we want buildable upstreams for all GF library fonts, to what degree should we be massaging the upstream repository structure and build processes - forking our own versions if necessary to make things fit our conventions - to make this happen?
+One philosophical question which arises from the top 30 which did not build (unusual repo structure, unable to automatically find source files, etc.): If we want buildable upstreams for all GF library fonts, to what degree should we be massaging the upstream repository structure and build processes - forking our own versions if necessary to make things fit our conventions - to make this happen?
