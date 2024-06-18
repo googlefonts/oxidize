@@ -8,6 +8,10 @@ The font format is complex and presents many opportunities for particular config
 times. In many cases, this can be done with relatively small input font files. Since fuzzers explore all kinds of ways of encoding font
 data, they will inevitably trigger these degenerate cases, ultimately resulting in timeouts.
 
+Timeouts in the fuzzer can block it's progress so should be eliminated. Additionally timeouts are a potential security issue. If timeouts
+aren't prevented then, malicious fonts could be crafted that cause the software processing fonts (such as browsers) to lock up when trying
+to render them.
+
 We spent a significant amount of time in Harfbuzz tracking down and fixing timeouts found by the fuzzer. This led to developing several
 strategies to prevent broad classes of timeouts instead of fixing each timeout as a one-off.
 
@@ -72,3 +76,14 @@ There are two broad classes of mechanisms that can cause non-linear scaling in p
    lookups visited and end processing when a configured limit is reached. In CFF/CFF2 processing, we limit the number of instructions that
    can be executed. In Harfbuzz, [hb-limits.h](https://github.com/harfbuzz/harfbuzz/blob/main/src/hb-limits.hh) contains several
    configurable operation limits. This can be used as a starting point to find places where we've implemented operation counts.
+
+4. **Cycle Detection:** when processing recursive structures it is sometimes possible to eliminate cycles (if it doesn't affect
+   correctness) via cycle detection. For example harfbuzz does this during
+   [composite glyph closure](https://github.com/harfbuzz/harfbuzz/blob/main/src/hb-subset-plan.cc#L810). Cycle detection will allow the
+   processing to not waste any time in cycles and can be used in conjunction with operation counting to catch other non-cycle cases.
+
+## Future Improvements ##
+
+One thing we currently don't do in Harfbuzz, which is causing problems, is to use a unified work counter across different parts of the
+code. For example: we have one work counter when getting glyph outline from the glyf table. And we have a separate work counter in the
+VARC table. But the two when combined currently can do too much work because we use separate counters.
