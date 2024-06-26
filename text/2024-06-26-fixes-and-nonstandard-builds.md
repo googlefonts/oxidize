@@ -9,9 +9,9 @@ minority but which still need supporting in a Rust toolchain.
 
 ## Standard builds
 
-A standard build happens when `gftools-builder` is used with no custom
+A standard build happens when [`gftools-builder`](https://github.com/googlefonts/gftools/blob/main/Lib/gftools/builder/__init__.py) is used with no custom
 configuration file, or with a little "light" configuration: options
-provided by the default `googlefonts` recipe provider.
+provided by the default [`googlefonts` recipe provider](https://github.com/googlefonts/gftools/blob/main/Lib/gftools/builder/recipeproviders/googlefonts.py).
 
 The `googlefonts` recipe provider builds multiple targets, some of which
 are for the benefit of the font designer - designers often like to
@@ -21,7 +21,7 @@ in a variable font design, or autohinted statics in the case of a
 non-variable design.
 
 Google Fonts has a tight set of [requirements](https://googlefonts.github.io/gf-guide/) for a binary font
-before it can be onboarded. We use `fontbakery` to check the fonts
+before it can be onboarded. We use [`fontbakery`](https://github.com/fonttools/fontbakery/) to check the fonts
 against those requirements. Some of these requirements can be met by
 altering the sources, but some cannot; and it is not always possible
 to alter the sources (for example, if we are onboarding a non-commissioned
@@ -31,9 +31,9 @@ want to avoid forking the source).
 To help meet these requirements, after a font is compiled, the
 `googlefonts` recipe provider runs the following post-production steps:
 
-* `ttfautohint` (for a non-variable design)
-* `gftools-fix-font`/`gftools-fix-family` (binary hotfixes)
-* `gftools-gen-stat` (add a compliant `STAT` table)
+* [`ttfautohint`](https://freetype.org/ttfautohint/doc/ttfautohint.html) (for a non-variable design)
+* [`gftools-fix-font`](https://github.com/googlefonts/gftools/blob/main/Lib/gftools/scripts/fix_font.py)/[`gftools-fix-family`](https://github.com/googlefonts/gftools/blob/main/Lib/gftools/scripts/fix_family.py) (binary hotfixes)
+* [`gftools-gen-stat`](https://github.com/googlefonts/gftools/blob/main/Lib/gftools/scripts/gen_stat.py) (add a compliant `STAT` table)
 
 ### What does `gftools-fix-family` do?
 
@@ -96,7 +96,7 @@ profile.
 
 Google Fonts also has [complex requirements](https://googlefonts.github.io/gf-guide/variable.html#stat-table) for the `STAT` table, and
 there is currently no way to specify the desired contents of this table
-in font editors. This is why we have created the `gftools-gen-stat`
+in font editors. This is why we have created the [`gftools-gen-stat`](https://github.com/googlefonts/gftools/blob/main/Lib/gftools/scripts/gen_stat.py)
 utility to add the `STAT` table. `gftools-gen-stat` either takes a YAML
 description of the desired `STAT` table entries, or automatically
 determines the desired entries based on the font and the data in the axis
@@ -122,21 +122,23 @@ The most common custom build is the Noto project, which has a number of
 unusual requirements, partly because different end-users require different
 things from the deliverables:
 
-* For the Google Fonts deliverable, we use `ufomerge` to merge in a Latin
+* For the Google Fonts deliverable, we use [`ufomerge`](https://github.com/googlefonts/ufomerge) to merge in a Latin
   core from Noto Sans or Noto Serif at the source level before compiling.
   We apply the fixes above to help make these deliverables compliant with
   GF requirements.
-* For the Android deliverable, we use `hb-subset` to slim the variable
+* For the Android deliverable, we use [`hb-subset`](https://github.com/harfbuzz/harfbuzz/) to slim the variable
   font to the range `wght=400:800` and drop any width axis.
 * To support other end-users (Linux distros etc.), we also supply a
   matrix of
     - variable fonts, unhinted TTF, hinted TTF and OTF
     - full (+Latin) and standard (no Latin)
 
+This is all orchestrated by the [`noto` recipe provider](https://github.com/googlefonts/gftools/blob/main/Lib/gftools/builder/recipeproviders/noto.py).
+
 ### Color fonts
 
 Some of our fonts (Kalnia Glaze, Bitcount, SixtyFour Convergence, etc.)
-use `paintcompiler`, a tool for adding a COLRv1 table programatically
+use [`paintcompiler`](https://github.com/simoncozens/paintcompiler), a tool for adding a COLRv1 table programatically
 from a Python script. For example, a designer can say "paint this
 glyph according to a gradient which starts at the origin and ends at
 the top right corner of the bounding box" without having to manually
@@ -157,19 +159,19 @@ follow this model.
 To take Playwrite as example, each of 56 language-specific Playwrite fonts
 (and potentially another 56 Playwrite Guides fonts in the future) are
 generated from a single source file, using a build plan orchestrated by
-a gftools-builder recipe provider called `fontprimer`. `fontprimer` is
+a gftools-builder recipe provider called [`fontprimer`](https://github.com/simoncozens/fontprimer). `fontprimer` is
 given information about how a variant is derived, and then determines
 the build steps to make it.
 
 To build Playwrite Argentina, we first build the main Playwrite VF
 according to the googlefonts requirements above, and then:
 
-* Use `fonttools varLib.instancer` to select particular values of the
+* Use [`fonttools varLib.instancer`](https://github.com/fonttools/fonttools/blob/main/Lib/fontTools/varLib/instancer/__init__.py) to select particular values of the
   `YEXT`, `SPED` and `slnt` axes, to produce a partially-instanced VF.
-* Perform a "deep" remapping of the `cmap` table such that, for example,
+* Perform a ["deep" remapping](https://github.com/googlefonts/gftools/blob/main/Lib/gftools/scripts/remap_font.py) of the `cmap` table such that, for example,
   `A` now maps to the cursive capital `A.cur`. ("Deep" remapping also
   replaces `A` with `A.cur` in layout rules.)
-* Remap the GSUB layout tables such that layout rules in `locl` and
+* [Remap the GSUB layout tables](https://github.com/googlefonts/gftools/blob/main/Lib/gftools/scripts/remap_layout.py) such that layout rules in `locl` and
   `ccmp` are added to the `calt` feature. (A fix for Adobe InDesign.)
 * Use `hb-subset` to remove non-essential glyphs. (In this case, we
   no longer use the standard non-cursive `A` glyph.)
@@ -177,15 +179,15 @@ according to the googlefonts requirements above, and then:
   on a font with `slnt` axis does *not* produce an italic font.)
 * Run `gftools-fix-font` again to update the name table / `hhea` table
   as appropriate.
-* Use `gftools-rename-family` to the family to `Playwrite Argentina`.
+* Use [`gftools-rename-font`](https://github.com/googlefonts/gftools/blob/main/Lib/gftools/scripts/rename_font.py) to the rename family to `Playwrite Argentina`.
 
-A separate build target uses `fontprimer.guidelines` to modify the source
+A separate build target uses [`fontprimer.guidelines`](https://github.com/simoncozens/fontprimer/blob/main/Lib/fontprimer/guidelines.py) to modify the source
 to add guidelines to each glyph, and then does the above steps to produce
 a separate "Playwrite Argentina Guides" family.
 
 Similar processes are used to build other handwriting families, although
 the specific steps used to select a variant may differ. (For example,
-we derive the variants of Edu AU Hand families by baking in different
+we derive the variants of [Edu AU Hand families](https://github.com/SorkinType/VICWANTSchoolhandAustralia/blob/main/sources/config.yaml) by baking in different
 stylistic sets instead of partially instancing and remapping.)
 
 ### Other challenging build situations
@@ -200,6 +202,6 @@ for example:
 * [Noto Sans Math](https://github.com/notofonts/math), which has a `MATH` table. (Now part of the
   `glyphsLib`/`ufo2ft` build chain, but previously added manually
   with `ttx`)
-* [Sawarabi Mincho](https://github.com/googlefonts/sawarabi-mincho/blob/main/sources/config.yaml), which has FontForge sources and uses `babelfont`
+* [Sawarabi Mincho](https://github.com/googlefonts/sawarabi-mincho/blob/main/sources/config.yaml), which has FontForge sources and uses [`babelfont`](https://github.com/simoncozens/babelfont)
   to compile them to Glyphs and then TTF.
 * Noto CJK, where we ingest binaries.
