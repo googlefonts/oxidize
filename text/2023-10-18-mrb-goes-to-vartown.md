@@ -9,6 +9,10 @@ What happened between 1976 and 2013 is underdocumented. PRs welcome.
 The pseudonym Mr B is used because @rsheeter thinks its funny. YMMV.
 
 * [ATypI 1976](#atypi-1976)
+* [1989 Multiple Master](#1989-multiple-master)
+* [The 90's, TrueType GX](#the-90s-truetype-gx)
+* [1994 Skia Font](#1994-skia-font)
+* [2000's](#2000s)
 * [2004](#2004)
 * [Late 2013 to summer 2014](#late-2013-to-summer-2014)
 * [2014 to summer 2015](#2014-to-summer-2015)
@@ -24,7 +28,63 @@ The pseudonym Mr B is used because @rsheeter thinks its funny. YMMV.
 
 In "Font Technology: Methods and Tools" Peter Karow mentions that in 1976 there was discussion of
 the IKARUS program having a new trick: it can interpolate. This is the earliest written mention
-of what ultimately becomes variable fonts the author has identified.
+of what ultimately becomes variable fonts the author has identified. However, it is ahead of time
+as opposed to on the client.
+
+## 1989 Multiple Master
+
+Adobe demonstrates Multiple Masters. They interpolate from corner masters and do not encode the default.
+
+You have to define all the corners so you need 2^N masters. To keep things practical there is a
+hard coded limit of 4 axes / 16 masters.
+
+For context, Adobe apps are so widely used they essentially constitutie a platform. This enables
+Adobe to invent and ship a format.
+
+_TODO: Who worked on them? Why?_
+
+## The 90's, TrueType GX!
+
+Mike Reed, of Skia fame, looks at multiple master and has two key insights, effectively inventing variable fonts:
+
+1. We shouldn't _have_ to start at a corner, we should pick some point and encode deltas from it
+1. We should be able to instantiate at runtime instead of ahead of time
+
+It falls out of this approach that you can have lots of axes, the 4 axis limit is shattered!
+This is variable fonts as announced at ATypI 2016. We just took a 20-ish year break.
+
+For context, Apple owns it's platform. This enables Apple to invent and ship a format.
+
+At about the same time TrueType - as an upgrade from bitmap fonts - is being sold as a disk space
+win for printers. GX joins the fun, throw out your box of floppies and use this 40KB font that
+supports all point sizes.
+
+As was the style at the time, Apple doesn't open source any of this. The documentation is described
+as poor. This probably contributes to the delay in today's variable fonts shipping.
+
+References:
+
+1. https://en.wikipedia.org/wiki/QuickDraw_GX#TrueType_GX
+1. https://www.monotype.com/resources/articles/part-1-from-truetype-gx-to-variable-fonts
+1. https://www.monotype.com/resources/expertise/truetype-gx-variable-fonts 
+
+## 1994 Skia Font
+
+[Skia](https://en.wikipedia.org/wiki/Skia_(typeface)) ([specimen](https://www.axis-praxis.org/specimens/skia)) is the first significant variable font
+to ship. Characterized as a "QuickDraw GX" font, it has weight and width variation, demonstrated
+complete with a slider UI in https://vimeo.com/120047887.
+
+David Berlow was contracted by Apple to make fonts. Lightly paraphrased, multiple sources agree that
+There's no single designer who knows the ins and outs of variable font design better than Berlow,
+he's lived it since the 90's.
+
+Berlow's famous animated lizard is born in the mid-90's
+
+_TODO: link to said lizard_
+
+## 2000's
+
+FreeType reverse engineers TrueType GX.
 
 ## 2004
 
