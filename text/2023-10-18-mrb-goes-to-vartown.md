@@ -78,9 +78,8 @@ David Berlow was contracted by Apple to make fonts. Lightly paraphrased, multipl
 There's no single designer who knows the ins and outs of variable font design better than Berlow,
 he's lived it since the 90's.
 
-Berlow's famous animated lizard is born in the mid-90's
-
-_TODO: link to said lizard_
+Berlow's famous animated lizard, shipped in [Zycon](https://www.axis-praxis.org/specimens/zycon),
+is born in the mid-90's.
 
 ## 2000's
 
