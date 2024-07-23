@@ -92,6 +92,10 @@ MutatorMath also existed.
 
 ## Late 2013 to summer 2014
 
+Adam Twardoch proposes the resurrection of Multiple Master to the W3C Webfonts Working group
+[thread](https://lists.w3.org/Archives/Public/public-webfonts-wg/2013Jun/0024.html), observing
+that the dynamic context of the web may benefit more than application UI or print. 
+
 Google is working on Noto phase 3. So far we're collecting binaries.
 It's not what would traditionally be viewed as open source because we don't have the
 "source" in the Apache 2 sense of the preferred form for making modifications
@@ -105,6 +109,8 @@ This bothers Mr B. We need the souces to be properly open source and to do cool 
 like variable fonts. Provision of sources becomes part of Noto phase 3.
 
 ## 2014 to summer 2015
+
+A List Apart publishes [Variable Fonts for Responsive Design](https://alistapart.com/blog/post/variable-fonts-for-responsive-design/).
 
 Mr B knows sources are coming! He's excited! But ... how do you _build_ those sources? We're going to
 go from binaries with no sources to sources+binaries and no way to compile a binary from the sources.
