@@ -34,21 +34,21 @@ as opposed to on the client.
 ## 1989 Multiple Master
 
 Adobe demonstrates Multiple Masters. They interpolate from corner masters and do not encode the default.
+Multiple master instantiation is done at runtime instead of ahead of time.
 
 You have to define all the corners so you need 2^N masters. To keep things practical there is a
 hard coded limit of 4 axes / 16 masters.
 
-For context, Adobe apps are so widely used they essentially constitutie a platform. This enables
+For context, Adobe apps are so widely used they essentially constitute a platform. This enables
 Adobe to invent and ship a format.
 
 _TODO: Who worked on them? Why?_
 
 ## The 90's, TrueType GX!
 
-Mike Reed, of Skia fame, looks at multiple master and has two key insights, effectively inventing variable fonts:
-
-1. We shouldn't _have_ to start at a corner, we should pick some point and encode deltas from it
-1. We should be able to instantiate at runtime instead of ahead of time
+Mike Reed, of Skia fame, looks at multiple master and has a key insight, effectively inventing 
+modern variable fonts: We shouldn't _have_ to start at a corner, we should pick some point and
+encode deltas from it. Like multiple master, TrueType GX fonts are instantiated at runtime.
 
 It falls out of this approach that you can have lots of axes, the 4 axis limit is shattered!
 This is variable fonts as announced at ATypI 2016. We just took a 20-ish year break.
