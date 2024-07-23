@@ -6,7 +6,7 @@ Written in 2023, mistakes are @rsheeter's fault. Anything useful came from someo
 
 What happened between 1976 and 2013 is underdocumented. PRs welcome.
 
-The pseudonym Mr B is used because @rsheeter thinks its funny. YMMV.
+The pseudonym Mr B is used because @rsheeter thinks its funny to refer to Behdad Esfahbod. YMMV.
 
 * [ATypI 1976](#atypi-1976)
 * [1989 Multiple Master](#1989-multiple-master)
