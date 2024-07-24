@@ -46,9 +46,10 @@ _TODO: Who worked on them? Why?_
 
 ## The 90's, TrueType GX!
 
-Mike Reed, of Skia fame, looks at multiple master and has a key insight, effectively inventing 
-modern variable fonts: We shouldn't _have_ to start at a corner, we should pick some point and
-encode deltas from it. Like multiple master, TrueType GX fonts are instantiated at runtime.
+Mike Reed, of [Skia](https://news.ycombinator.com/item?id=16146132#16147723) fame, looks at multiple 
+master and has a key insight, effectively inventing modern variable fonts: We shouldn't _have_ to start
+at a corner, we should pick some point and encode deltas from it.
+Like multiple master, TrueType GX fonts are instantiated at runtime.
 
 It falls out of this approach that you can have lots of axes, the 4 axis limit is shattered!
 This is variable fonts as announced at ATypI 2016. We just took a 20-ish year break.
