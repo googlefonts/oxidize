@@ -33,43 +33,45 @@ as opposed to on the client.
 
 ## 1989 Multiple Master
 
-Adobe demonstrates Multiple Masters (MM). They interpolate from corner masters and do not encode the default.
-Multiple master instantiation is done at runtime instead of ahead of time.
+Adobe demonstrates Multiple Master (MM) fonts.
+They interpolate from corner masters and do not encode the default.
+Multiple master instantiation is done at runtime instead of ahead of time, although [Adobe Type Master (ATM)](https://en.wikipedia.org/wiki/Adobe_Type_Manager) offered ahead-of-time export.
 
-You have to define all the corners so you need 2^N masters. To keep things practical there is a
-hard coded limit of 4 axes / 16 masters.
-
-Adobe Type Manager is popular. It hooks font-related system calls and is thus able to make MM
+ATM is very popular at this time. It hooks font-related system calls and is thus able to make MM
 Just Work in a variety of apps, albeit with limited capability. A few apps, most notably Illustrator
-and Photoshop shipped with some degree of direct support but overall user application support never really
-took off. Font making applications did support MM.
+and Photoshop, shipped with some degree of direct support - sliders but no auto optical sizing? - 
+but overall user application support never really took off. Font making applications did support MM
+in the mid-late 90s, but initially it was a proprietary format with an in-house font editor.
 
-The Adobe Type team is excited about optical size but the primary business reason to invest in MM is
-the ability to substitute Adobe Sans and Serif when generating a PDF that would otherwise end up
+The Adobe Type team is excited about optical size, but the primary business reason to invest in MM is
+the ability to substitute Adobe Sans and Serif when generating or rendering a PS or PDF file that would otherwise end up
 missing a font. You have the "correct" font, perhaps not allowed to be embedded, and generate a good
-substitution, with similar metrics, cap height, weight, slope, etc. Adobe Sans goes first, derived from
-Myriad and shipped in "Super ATM" in 90 or 91. Adobe Serif shows up in the next version.
+substitution, with similar metrics, cap height, weight, slope, etc metadata. 
+Or you have a PDF that doesn't contain a fully embedded font, but has that metadata, so Adobe Acrobat generates suitable instances to render it.
+Adobe Sans goes first, derived from Myriad, and shipped in "Super ATM" in '90 or '91. Adobe Serif shows up in the next version.
 
 Two major versions of Multiple Master were shipped, which we'll creatively call first and second:
 
-* The first version
-   * Corner masters only
-   * Linear interpolation
-   * Optical size support, though no optical size font shipped until Minion (in 92?)
-   * Piecewise linear remapping of coords, roughly avar1
-* The second version
-   * Adds support non-corner masters, referred to as "intermediate masters"
-   * Notably used for Adobe Jenson, shipped in 96 with weight and optical size
+* v1
+   * Corner masters only.
+   * Linear interpolation.
+   * Optical size support, though no optical size font shipped until [Minion](https://en.wikipedia.org/wiki/Minion_(typeface)) (in '92).
+   * You have to define all the corners so you need 2^N masters.
+   * To keep things practical there is a hard coded limit of 4 axes, requiring 16 masters.
+   * Piecewise linear remapping of coords, roughly avar1.
+* v2
+   * Adds support non-corner masters, referred to as "intermediate masters".
+   * Notably used for [Adobe Jenson](https://en.wikipedia.org/wiki/Adobe_Jenson), shipped in '96 with weight and optical size.
 
 At some point MM also added support for fencing off portions of the design space, notably used to keep
 users away from the small, bold, condensed corner of Kepler (weight, width, optical size).
 
-The MM format was abandoned during the move to OpenType though the concept of a runtime variable font lived on.
+The MM format was abandoned during the move to OpenType, though the concept of a runtime variable font lived on.
 
-## The 90's, TrueType GX!
+## The 90s, TrueType GX!
 
-Mike Reed, of [Skia](https://news.ycombinator.com/item?id=16146132#16147723) fame, looks at multiple 
-master and has a key insight, effectively inventing modern variable fonts: We shouldn't _have_ to start
+Mike Reed, of [Skia](https://news.ycombinator.com/item?id=16146132#16147723) fame, looks at Multiple 
+Master v1 and has a key insight, effectively inventing modern variable fonts: We shouldn't _have_ to start
 at a corner, we should pick some point and encode deltas from it.
 Like multiple master, TrueType GX fonts are instantiated at runtime.
 
@@ -110,8 +112,8 @@ FreeType reverse engineers TrueType GX.
 
 ## 2004
 
-Superpolator (https://superpolator.com/) appears to date back to 2004. Presumably some form of
-MutatorMath also existed.
+[Superpolator](https://superpolator.com) is released in 2004.
+Under the hood it uses the python MutatorMath library.
 
 ## Late 2013 to summer 2014
 
@@ -121,7 +123,7 @@ that the dynamic context of the web may benefit more than application UI or prin
 
 Google is working on Noto phase 3. So far we're collecting binaries.
 It's not what would traditionally be viewed as open source because we don't have the
-"source" in the Apache 2 sense of the preferred form for making modifications
+"source" in the Apache 2 sense of the preferred form for making modifications.
 
 > "Source" form shall mean the preferred form for making modifications,
 > including but not limited to software source code, documentation source, and configuration files.
