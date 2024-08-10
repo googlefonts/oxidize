@@ -41,7 +41,8 @@ hard coded limit of 4 axes / 16 masters.
 
 Adobe Type Manager is popular. It hooks font-related system calls and is thus able to make MM
 Just Work in a variety of apps, albeit with limited capability. A few apps, most notably Illustrator
-and Photoshop shipped with some degree of directly support.
+and Photoshop shipped with some degree of direct support but overall user application support never really
+took off. Font making applications did support MM.
 
 The Adobe Type team is excited about optical size but the primary business reason to invest in MM is
 the ability to substitute Adobe Sans and Serif when generating a PDF that would otherwise end up
@@ -63,9 +64,7 @@ Two major versions of Multiple Master were shipped, which we'll creatively call 
 At some point MM also added support for fencing off portions of the design space, notably used to keep
 users away from the small, bold, condensed corner of Kepler (weight, width, optical size).
 
-Font making apps supported MM but applications never really picked it up.
-
-MM was abandoned during the move to OpenType.
+The MM format was abandoned during the move to OpenType though the concept of a runtime variable font lived on.
 
 ## The 90's, TrueType GX!
 
