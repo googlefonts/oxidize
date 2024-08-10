@@ -35,7 +35,7 @@ as opposed to on the client.
 
 Adobe demonstrates Multiple Master (MM) fonts.
 They interpolate from corner masters and do not encode the default.
-Multiple master instantiation is done at runtime instead of ahead of time, although [Adobe Type Master (ATM)](https://en.wikipedia.org/wiki/Adobe_Type_Manager) offered ahead-of-time export.
+Multiple Master instantiation is done at runtime instead of ahead of time, although [Adobe Type Master (ATM)](https://en.wikipedia.org/wiki/Adobe_Type_Manager) offered ahead-of-time export.
 
 ATM is very popular at this time. It hooks font-related system calls and is thus able to make MM
 Just Work in a variety of apps, albeit with limited capability. A few apps, most notably Illustrator
