@@ -88,14 +88,20 @@ We will _prefer_ to:
 
 ## Getting started
 
-_TODO: document first steps, milestones ... or use issues/milestones in this repo_
+Updated 8/16/2024. Our first phase projects are:
 
-Current guess at first steps (very open to debate):
+1. [Skrifa](https://docs.rs/skrifa), meant to replace FreeType in Chrome
+   * https://chromestatus.com/feature/5717358869217280 tracks the Chrome status
+1. [fontc](https://github.com/googlefonts/fontc), meant to replace [fontmake](https://github.com/googlefonts/fontmake)
+   * https://googlefonts.github.io/fontc_crater/ tracks progress in getting the compilers to match
 
-1. Explore how to support font I/O for both primary use cases cleanly, demonstrate a solution
-   * If Swash could shape using our shiny new toys that would be a very nice demonstration
-3. Build next-gen fontmake, converting parts to Rust and enabling parallelism
-   * Guessing we would either do a good interchange format ([flatfont](https://github.com/googlefonts/flatfont)?) + ninja OR a Rust based executor using something like Rayon
+The next phase is:
+
+1. [klippa](https://github.com/googlefonts/fontations/tree/main/klippa), meant to be a memory safe replacement for [hb-subset](https://harfbuzz.github.io/harfbuzz-hb-subset.html) and [fonttools subset](https://fonttools.readthedocs.io/en/latest/subset/)
+   * Google Fonts depends haveily on subsetting
+1. [harfruzz](https://github.com/harfbuzz/harfruzz), meant to replace HarfBuzz [shaping](https://harfbuzz.github.io/what-is-harfbuzz.html)
+
+Both phases build on core read/write fonts work in https://github.com/googlefonts/fontations.
 
 ## Definitions
 
