@@ -106,11 +106,9 @@ he's lived it since the 90's.
 Berlow's famous animated lizard, shipped in [Zycon](https://www.axis-praxis.org/specimens/zycon),
 is born in the mid-90's.
 
-## 2000's
-
-FreeType reverse engineers TrueType GX.
-
 ## 2004
+
+FreeType adds support for "Apple's distorable font technology" ([commit](https://github.com/freetype/freetype/commit/44bb303510725735ca2650bdd524af25abab0c71))
 
 [Superpolator](https://superpolator.com) is released in 2004.
 Under the hood it uses the python MutatorMath library.
