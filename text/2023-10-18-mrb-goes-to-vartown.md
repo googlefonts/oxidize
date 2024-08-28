@@ -12,7 +12,6 @@ The pseudonym Mr B is used because @rsheeter thinks its funny to refer to Behdad
 * [1989 Multiple Master](#1989-multiple-master)
 * [The 90's, TrueType GX](#the-90s-truetype-gx)
 * [1994 Skia Font](#1994-skia-font)
-* [2000's](#2000s)
 * [2004](#2004)
 * [Late 2013 to summer 2014](#late-2013-to-summer-2014)
 * [2014 to summer 2015](#2014-to-summer-2015)
