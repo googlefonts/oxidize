@@ -90,8 +90,9 @@ We will _prefer_ to:
 
 Updated 8/16/2024. Our first phase projects are:
 
-1. [Skrifa](https://docs.rs/skrifa), meant to replace FreeType in Chrome
+1. [Skrifa](https://docs.rs/skrifa), replace FreeType for querying metrics, loading outlines, autohinting, and executing hints
    * https://chromestatus.com/feature/5717358869217280 tracks the Chrome status
+   * Google typically uses Skia to rasterize so we don't implement that in Skrifa
 1. [fontc](https://github.com/googlefonts/fontc), meant to replace [fontmake](https://github.com/googlefonts/fontmake)
    * https://googlefonts.github.io/fontc_crater/ tracks progress in getting the compilers to match
 
