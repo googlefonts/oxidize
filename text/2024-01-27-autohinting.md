@@ -1,27 +1,34 @@
 # Autohinting
 
-*Or, how to smash a glyph into the pixel grid without any help from the font
-designer.*
+*Or, how to smash a [glyph](https://rsheeter.github.io/font101/#glyph-ids-and-the-cmap-table)
+into the pixel grid without any help from the font designer.*
 
 [Hinting](https://en.wikipedia.org/wiki/Font_hinting) is the process of
 generating information (aka "hints") for a font that define how glyph outlines
 should be adjusted at various sizes so that the edges better align with the
 pixel grid when rasterized. This improves contrast and readability at small sizes. 
- 
+
+> See [The Raster Tragedy](http://rastertragedy.com/) for a deeper dive into the
+process of rendering high quality text.
+
 Manual hinting is done explicitly by the font developer, typically through the
-use of graphical tools or writing TrueType instructions directly.
+use of graphical tools (such as [vtt](https://learn.microsoft.com/en-us/typography/tools/vtt/) or
+[Glyphs](https://glyphsapp.com/learn/hinting-manual-truetype-hinting)) or
+writing TrueType instructions directly.
 
 *Auto*hinting is done by software, using a set of heuristics to determine how
 outlines should be adjusted. This can be done ahead of time
 (see [ttfautohint](https://freetype.org/ttfautohint/)) or just in time as glyph
 outlines are requested from the font. This document will focus on the latter.
+Of particular interest to Google: Android makes heavy use of runtime autohinting but this is becoming increasingly
+unnecessary as the prevalence of high resolution screens grows.
 
 > Note: the techniques discussed here are implemented in 
 [skrifa](https://github.com/googlefonts/fontations/tree/2c9212d99184498327aa44b2069f8183025f5fa9/skrifa/src/outline/autohint)
 but are based heavily on the original work done by David Turner, Werner
 Lemberg and others in the FreeType
 [autofit](https://gitlab.freedesktop.org/freetype/freetype/-/tree/f92c96550ad763639158587974cf11067ace743d/src/autofit)
-module.
+module. See [Real-Time Grid Fitting of Typographic Outlines](https://www.tug.org/TUGboat/tb24-3/lemberg.pdf) for more insight into the FreeType design.
 
 > Secondary note: this is a tour of the autohinting process. The actual
 implementation is fairly complex and not amenable to a full description here.
@@ -69,7 +76,7 @@ Style classification proceeds in three phases:
 This process is done for all glyphs at once when the autohinter state is
 initialized. The structure of a font file (lacking efficient mappings from
 glyph id to character or to layout feature) makes it cost prohibitive to do
-style classification for a single glyph.
+style classification for a single glyph. 
 
 ### Style metrics ([src](https://github.com/googlefonts/fontations/tree/6eff17a15ca0caaea27eb130fa959d529d58625b/skrifa/src/outline/autohint/metrics))
 
@@ -89,7 +96,11 @@ contains a list of candidate characters that are used to compute the
 positions of each alignment zone. For example, the maximum y value of the
 all points in the "T" glyph might be used to compute the top alignment
 zone while the minimum y value of all points in the "y" glyph could be
-use to compute the position of a bottom zone.
+use to compute the position of a bottom zone. Note that these are called
+zones but are computed as a single positions-- like most things in
+autohinting, these positions will be expanded into a region by a heuristic
+distance later when we determine which edges are "captured" by the
+blue zones.
 
 Overall, alignment zones ensure consistent _placement_ of features when
 adjusting outlines.
@@ -105,6 +116,18 @@ and the sorted set of distances between adjacent edges is saved for later use.
 
 Overall, stem widths ensure consistent _visual weight_ of features when
 adjusting outlines.
+
+#### Scaling and grid-fitting metrics ([src](https://github.com/googlefonts/fontations/blob/bb9fd93028bbadb21b18ce11fecf69a5b0eb0216/skrifa/src/outline/autohint/metrics/scale.rs))
+
+Both alignment zones and stem widths are scaled to the requested font size
+and grid-fitted before use by the subsequent hinting phases.
+
+### Precomputaion
+
+It might make sense to precompute this information and store it in the font to
+avoid the cost of initialization. For non-variable fonts, we can compute both
+styles and metrics. For variable fonts, we can precompute styles but must defer
+metrics to runtime since those are dependent on the position in variation space.
 
 ## The importance of connection
 
@@ -224,9 +247,10 @@ _points_.
 
 Edge hinting is performed in three passes:
 
-1. Edges that have been assigned a blue zone are handled first. These edges are
-   simply snapped to the grid-fitted position of their associated blue zone.
-2. Stem edges (those that have been linked with another edge to form a pair) are
+1. Edge pairs that have been assigned a blue zone are handled first. These
+   edges are simply snapped to the grid-fitted position of their associated
+   blue zone.
+2. Stem edges (paired edges that have not been captured by a blue zone) are
    handled next. These are snapped directly to the grid without guidance from an
    alignment zone. The hinter tries to maintain a minimal distance from already
    hinted edges to avoid overlaps.
