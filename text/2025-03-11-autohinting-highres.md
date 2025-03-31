@@ -14,7 +14,7 @@ contrast and improve readability by increasing the pixel coverage for each
 visual feature of the outline. See [autohinting](2025-01-27-autohinting.md) for
 a more detailed explanation of hinting and autohinting.
 
-Since pixel density determines that number of pixels available to represent
+Since pixel density determines the number of pixels available to represent
 a particular visual feature, it stands to reason that the benefit of
 hinting (auto- or otherwise) is _inversely proportional_ to the pixel density
 of the target display. Therefore, we can assume that, at some density, the
