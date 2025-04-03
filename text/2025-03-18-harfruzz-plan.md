@@ -117,12 +117,11 @@ Profiling is key but there are a few known places where effort can be focused:
 
 There will undoubtedly be other opportunities as we begin measurement.
 
+See also: a great document by Behdad discussing the [caching strategies](https://docs.google.com/document/d/1_VgObf6Je0J8byMLsi7HCQHnKo2emGnx_ib_sHo-bt4/edit)
+in HarfBuzz.
+
 ## 8. Testing
 
 A substantial chunk of the HarfBuzz test suite has already been [ported](https://github.com/harfbuzz/harfruzz/tree/main/tests).
 This gives us some strong assurance that the shaper is correct, at least
 in areas of the code that are known to be tricky.
-
-## 9. Future improvements
-
-
