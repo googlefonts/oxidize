@@ -18,7 +18,7 @@ Wherein we contemplate moving shaping, rasterization, font compilation, and gene
 
 ## Why
 
-We currently rely C++ for anything high performance, e.g. shaping or subsetting, and Python for general purpose manipulation. The results are exactly what you'd expect:
+We currently rely on C++ for anything high performance, e.g. shaping or subsetting, and Python for general purpose manipulation. The results are exactly what you'd expect:
 
 * Python code (fonttools, fontmake, nanoemoji, etc) have high development velocity, relatively fast developer rampup, and runtime safety, slow runtime
    * It's SO slow that running it in production at scale causes us great pain. Queues back up, we burn memory and CPU, and it just doesn't fit our infra all that well.
