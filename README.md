@@ -98,7 +98,7 @@ Updated 8/16/2024. Our first phase projects are:
 
 The next phase is:
 
-1. [klippa](https://github.com/googlefonts/fontations/tree/main/klippa), meant to be a memory safe replacement for [hb-subset](https://harfbuzz.github.io/harfbuzz-hb-subset.html) and [fonttools subset](https://fonttools.readthedocs.io/en/latest/subset/)
+1. [skera](https://github.com/googlefonts/fontations/tree/main/skera), meant to be a memory safe replacement for [hb-subset](https://harfbuzz.github.io/harfbuzz-hb-subset.html) and [fonttools subset](https://fonttools.readthedocs.io/en/latest/subset/)
    * Google Fonts depends heavily on subsetting
 1. [harfruzz](https://github.com/harfbuzz/harfruzz), meant to replace HarfBuzz [shaping](https://harfbuzz.github.io/what-is-harfbuzz.html)
 
