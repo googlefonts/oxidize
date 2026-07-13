@@ -90,7 +90,8 @@ References:
 
 1. https://en.wikipedia.org/wiki/QuickDraw_GX#TrueType_GX
 1. https://www.monotype.com/resources/articles/part-1-from-truetype-gx-to-variable-fonts
-1. https://www.monotype.com/resources/expertise/truetype-gx-variable-fonts 
+1. https://www.monotype.com/resources/expertise/truetype-gx-variable-fonts
+1. https://cjtype.com/dunbar-design-repository/articles/tools-for-interpolation-an-interview-with-erik-van-blokland/
 
 ## 1994 Skia Font
 
