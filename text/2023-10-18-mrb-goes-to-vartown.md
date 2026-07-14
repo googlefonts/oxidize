@@ -256,3 +256,13 @@ Not to worry, we'll just [rewrite in Rust](https://github.com/googlefonts/oxidiz
 * [fontc](https://github.com/googlefonts/fontc) aspires to be the next decades font compiler
 * [skrifa](https://docs.rs/skrifa/latest/skrifa/) aspires to replace FreeType
 * etc
+
+## 2026
+
+VFs work in all major operating systems.
+
+Chrome is [shipping skrifa](https://developer.chrome.com/blog/memory-safety-fonts).
+
+Application support remains dodgy.
+
+* https://www.thomasphinney.com/2026/07/variable-font-ui-is-broken/
